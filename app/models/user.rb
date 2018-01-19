@@ -5,4 +5,8 @@ class User < ApplicationRecord
   validates :username, presence: true
   has_secure_password
 
+  def flagged?
+    # flag user if self.status == "ahole" || self.status == "warned"
+  end
+
 end
