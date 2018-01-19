@@ -1,0 +1,10 @@
+<div>
+
+  <h4>name: <%= @location.name %></h4>
+  latitude: <%= @location.lonlat.lat %><br />
+  longitude: <%= @location.lonlat.lon %><br />
+
+  <%= link_to 'Show', @location %></td>
+  <%= link_to 'Edit', edit_location_path(@location)%>
+  <%= link_to 'Destroy', @location, method: :delete, data: { confirm: 'Are you sure?' } %>
+</div>

@@ -1,0 +1,7 @@
+<h3>All Locations</h3>
+
+<% @locations.each do |location| %>
+  <h4>name: <%= location.name %></h4>
+  latitude: <%= location.lonlat.lat %><br />
+  longitude: <%= location.lonlat.lon %>
+<% end %>

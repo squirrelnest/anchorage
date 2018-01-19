@@ -5,17 +5,19 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
+# Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.4'
+# User jquery-rails to automate jquery
+gem 'jquery-rails'
 # Use Puma as the app server
 gem 'puma', '~> 3.7'
-# Use SCSS for stylesheets
 # Use PostgreSQL as the database for ActiveRecord
 gem 'pg', '0.21.0'
 # Add postGIS adapter for activerecord to work with spatial database
 gem 'activerecord-postgis-adapter'
 # Load environment variables from .env
 gem 'dotenv', '~> 2.2', '>= 2.2.1'
-# Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
+# Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
@@ -31,7 +33,7 @@ gem 'jbuilder', '~> 2.5'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 3.0'
 # Use ActiveModel has_secure_password
-# gem 'bcrypt', '~> 3.1.7'
+gem 'bcrypt', '~> 3.1.7'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
