@@ -10,12 +10,14 @@ class ReviewsController < ApplicationController
 
   def create
     @review = Review.create(review_params)
-    @location = Location.create(location_params)
-    @location.save
-    @review.location = @location
+    unless params[:location_id]
+      @location = Location.create(location_params)
+      @location.save
+      @review.location = @location
+    end
     @review.user = @user
     @review.save
-    redirect_to review_path(@review)
+    redirect_to location_path(@review.location)
   end
 
   def show
@@ -42,7 +44,7 @@ class ReviewsController < ApplicationController
   private
 
   def review_params
-    params.permit(:content, :stability, :date_visited)
+    params.permit(:content, :stability, :date_visited, :location_id)
   end
 
   def location_params

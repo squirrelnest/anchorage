@@ -2,9 +2,14 @@
 
 <% @reviews.each do |review| %>
   <h4>name: <%= review.location.nickname %></h4>
-  latitude: <%= review.location.lonlat.lat %><br />
-  longitude: <%= review.location.lonlat.lon %><br />
+  latitude: <%= review.location.lat %><br />
+  longitude: <%= review.location.lon %><br />
   stability: <%= review.stability %><br />
   content: <%= review.content %>
+
+  <div class="links">
+    <%= link_to 'Edit', edit_review_path(review)%>
+    <%= link_to 'Destroy', review, method: :delete, data: { confirm: 'Are you sure?' } %>
+  </div>
 
 <% end %>
