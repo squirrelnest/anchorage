@@ -1,5 +1,27 @@
 <div id="header">
 
-  <%= link_to 'logout', logout_url %>
+  <div id="logo" style="display: inline-block; width: 200px;"><h2>ANCHORAGE</h2></div>
+
+  <div id="navbar" style="display: inline-block; float: right; margin: 20px;">
+
+    <% if @user %>
+
+      <%= link_to 'Home', locations_path %> |
+      <%= link_to 'Add Anchorage', new_review_path %> |
+      <%= link_to 'Your Reviews', my_reviews_path %> |
+    <% end %>
+
+    <% unless (controller_name == "users" && action_name == "new") ||
+      (controller_name == "sessions" && action_name == "new") %>
+
+      <% if @user %>
+        <%= link_to 'logout', logout_url %>
+      <% else %>
+        <%= link_to 'login', login_url %>
+      <% end %>
+
+    <% end %>
+
+  </div>
 
 </div>

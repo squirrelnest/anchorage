@@ -1,0 +1,10 @@
+<h3>All Reviews</h3>
+
+<% @reviews.each do |review| %>
+  <h4>name: <%= review.location.nickname %></h4>
+  latitude: <%= review.location.lonlat.lat %><br />
+  longitude: <%= review.location.lonlat.lon %><br />
+  stability: <%= review.stability %><br />
+  content: <%= review.content %>
+
+<% end %>

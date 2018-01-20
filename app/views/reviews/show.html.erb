@@ -1,0 +1,14 @@
+<div>
+
+  <h4><%= @review.location.nickname %></h4>
+  <em>Reviewed by <%= @review.user.username %></em> | <em>Anchor date: <%= @review.date_visited.strftime('%b %w, %Y') %></em>
+  <p>
+  latitude: <%= @review.location.lonlat.lat %><br />
+  longitude: <%= @review.location.lonlat.lon %><br />
+  stability: <%= @review.stability %><br />
+  content: <%= @review.content %><br />
+  </p>
+  <%= link_to 'Show', @review %></td>
+  <%= link_to 'Edit', edit_review_path(@review)%>
+  <%= link_to 'Destroy', @review, method: :delete, data: { confirm: 'Are you sure?' } %>
+</div>

@@ -1,10 +1,10 @@
 <div id="get-position">
 
-  <p>name: <input id="name" type="text" name="name" value="" placeholder="my backyard"></input></p>
-  latitude: <input id="lat" type="text" name="lat" value=""></input>
-  longitude: <input id="lon" type="text" name="lon" value=""></input>
+  <p>nickname: <input id="nickname" type="text" name="nickname" value="<%= @location.nickname %>" placeholder="my backyard"></input></p>
+  latitude: <input id="lat" type="text" name="lat" value="<%= @location.lat %>"></input>
+  longitude: <input id="lon" type="text" name="lon" value="<%= @location.lon %>"></input>
   <button onClick="getPosition()">Autofill</button>
 
-  <p><%= submit_tag "Submit Location" %></p>
+  <p><%= submit_tag "Submit" %></p>
 
 </div>

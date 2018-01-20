@@ -18,10 +18,14 @@ class UsersController < ApplicationController
     end
   end
 
+  def reviews
+    @reviews = @user.reviews
+  end
+
   private
 
   def user_params
-   params.permit(:username, :password)
+    params.permit(:username, :password)
   end
 
 end

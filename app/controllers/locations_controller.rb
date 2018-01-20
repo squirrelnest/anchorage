@@ -36,7 +36,7 @@ class LocationsController < ApplicationController
   private
 
   def location_params
-    params.permit(:name, :lon, :lat)
+    params.permit(:nickname, :lon, :lat)
   end
 
 end

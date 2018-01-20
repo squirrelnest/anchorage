@@ -1,7 +1,7 @@
 <h3>All Locations</h3>
 
 <% @locations.each do |location| %>
-  <h4>name: <%= location.name %></h4>
-  latitude: <%= location.lonlat.lat %><br />
-  longitude: <%= location.lonlat.lon %>
+  <h4><%= link_to location.nickname, location_path(location) %></h4>
+  latitude: <%= location.lat %><br />
+  longitude: <%= location.lon %>
 <% end %>

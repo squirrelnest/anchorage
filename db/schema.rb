@@ -10,29 +10,31 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180119004540) do
+ActiveRecord::Schema.define(version: 20180120075611) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
   enable_extension "postgis"
 
   create_table "locations", force: :cascade do |t|
-    t.string "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string "nickname"
     t.geography "lonlat", limit: {:srid=>4326, :type=>"st_point", :geographic=>true}, null: false
   end
 
   create_table "reviews", force: :cascade do |t|
-    t.string "content"
-    t.integer "rating"
+    t.text "content"
+    t.integer "stability"
+    t.datetime "date_visited", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "location_id", null: false
+    t.integer "user_id", null: false
   end
 
   create_table "users", force: :cascade do |t|
-    t.string "username", unique: true
+    t.string "username"
     t.string "password_digest"
+    t.datetime "created_at", null: false
   end
 
 end
