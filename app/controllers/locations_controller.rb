@@ -22,15 +22,25 @@ class LocationsController < ApplicationController
   end
 
   def update
-    @location = Location.find(params[:id])
-    @location.update(location_params)
-    @location.save
-    redirect_to location_path(@location)
+    if @user.admin
+      @location = Location.find(params[:id])
+      @location.update(location_params)
+      @location.save
+      redirect_to location_path(@location)
+    else
+      flash[:message] = "Only admins can do that."
+      redirect_to location_path(@location)
+    end
   end
 
   def destroy
-    Location.find(params[:id]).destroy
-    redirect_to locations_url
+    if @user.admin
+      Location.find(params[:id]).destroy
+      redirect_to locations_url
+    else
+      flash[:message] = "Only admins can do that."
+      redirect_to locations_url
+    end
   end
 
   private
