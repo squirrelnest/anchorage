@@ -13,6 +13,9 @@ class Location < ApplicationRecord
   has_many :reviews
   has_many :users, through: :reviews
 
+  validates :lonlat, uniqueness: true
+  validates :lonlat, presence: true
+
   def lat
     lonlat ? lonlat.lat : nil
   end
