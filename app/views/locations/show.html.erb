@@ -46,11 +46,13 @@
         <p>Date Visited: <%= review.date_visited %></p>
       </div>
 
-      <div class="links">
-        <%= link_to 'Back', locations_path %></td>
-        <%= link_to 'Edit', edit_review_path(review)%>
-        <%= link_to 'Destroy', review, method: :delete, data: { confirm: 'Are you sure?' } %>
-      </div>
+      <% if review.user_id == @user.id %>
+        <div class="links">
+          <%= link_to 'Back', locations_path %></td>
+          <%= link_to 'Edit', edit_review_path(review)%>
+          <%= link_to 'Destroy', review, method: :delete, data: { confirm: 'Are you sure?' } %>
+        </div>
+      <% end %>
 
     <% end %>
   </div>

@@ -30,15 +30,26 @@ class ReviewsController < ApplicationController
 
   def update
     @review = Review.find(params[:id])
-    @review.location.update(location_params)
-    @review.update(review_params)
-    @review.save
-    redirect_to review_path(@review)
+    if @review.user_id == @user.id
+      @review.location.update(location_params)
+      @review.update(review_params)
+      @review.save
+      redirect_to review_path(@review)
+    else
+      flash[:message] = "Can't touch what ain't yours."
+      redirect_to review_path(@review)
+    end
   end
 
   def destroy
-    Review.find(params[:id]).destroy
-    redirect_to reviews_url
+    @review = Review.find(params[:id])
+    if @review.user_id == @user.id
+      @review.destroy
+      redirect_to reviews_url
+    else
+      flash[:message] = "Can't touch what ain't yours."
+      redirect_to reviews_url
+    end
   end
 
   private
