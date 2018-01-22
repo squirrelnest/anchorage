@@ -22,7 +22,7 @@ class LocationsController < ApplicationController
   end
 
   def update
-    if @user.admin
+    if current_user.admin
       @location = Location.find(params[:id])
       @location.update(location_params)
       @location.save
@@ -34,13 +34,20 @@ class LocationsController < ApplicationController
   end
 
   def destroy
-    if @user.admin
+    if current_user.admin
       Location.find(params[:id]).destroy
       redirect_to locations_url
     else
       flash[:message] = "Only admins can do that."
       redirect_to locations_url
     end
+  end
+
+  def nearby
+    @current_lon = cookies[:lon].to_f
+    @current_lat = cookies[:lat].to_f
+    distance = 10000
+    @locations = Location.nearby(@current_lat, @current_lon, distance)
   end
 
   private

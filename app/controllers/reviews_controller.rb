@@ -9,18 +9,16 @@ class ReviewsController < ApplicationController
   end
 
   def create
-    @review = Review.create(review_params)
-    unless params[:location_id]
-      @location = Location.new(location_params)
-      if @location.save
-        @review.location = @location
-        @review.user = @user
-        @review.save
-        redirect_to location_path(@review.location)
-      else
-        flash[:message] = @location.errors.messages.values.flatten.join("/n") if @location.errors.any?
-        redirect_to new_review_path
-      end
+    @review = Review.new(review_params)
+    @location = Location.find_by(id: params[:location_id]) || Location.create(location_params)
+    if @location.valid?
+      @review.location = @location
+      @review.user = current_user
+      @review.save
+      redirect_to location_path(@review.location)
+    else
+      flash[:message] = @location.errors.messages.values.flatten.join("/n") if @location.errors.any?
+      redirect_to new_review_path
     end
   end
 

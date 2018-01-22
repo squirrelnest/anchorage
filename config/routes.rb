@@ -3,13 +3,18 @@ Rails.application.routes.draw do
 
   root 'locations#index'
 
+  # resources :locations
+
+  get '/locations/nearby' => 'locations#nearby'
   resources :locations
+
+  # resources :reviews
+
   resources :reviews
 
   # resources :users
 
   resources :users
-
   get '/my-reviews' => 'users#reviews'
 
   # resources :sessions

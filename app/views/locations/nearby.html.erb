@@ -1,0 +1,10 @@
+<div>
+
+  <h2>Nearby anchorages (within 1000 bananas of your current location at <%= @current_lat.round(6) %>, <%= @current_lon.round(6) %> )</h2>
+  <% @locations.each do |location| %>
+    <h4>Nickname: <%= location.nickname %></h4>
+    <p>Latitude: <%= location.lonlat.lat %></p>
+    <p>Longitude: <%= location.lonlat.lon %></p>
+  <% end %>
+
+</div>

@@ -25,11 +25,11 @@ class Location < ApplicationRecord
   end
 
   def lat
-    lonlat ? lonlat.lat : nil
+    lonlat ? lonlat.lat : @lat
   end
 
   def lon
-    lonlat ? lonlat.lon : nil
+    lonlat ? lonlat.lon : @lon
   end
 
   def distance(location)
@@ -43,6 +43,10 @@ class Location < ApplicationRecord
   end
 
   def nearby(distance)
+    self.class.nearby(self.lat, self.lon, distance)
+  end
+
+  def self.nearby(lat, lon, distance)
     Location.where("ST_DWithin(locations.lonlat, ST_GeographyFromText('SRID=4326;POINT(:lon :lat)'), :distance)", lon: lon, lat: lat, distance: distance)
   end
 

@@ -4,7 +4,7 @@
   latitude: <%= @location.lonlat.lat %><br />
   longitude: <%= @location.lonlat.lon %><br />
 
-  <% if @user && @user.admin %>
+  <% if current_user.admin %>
   <p>
     <%= link_to 'Edit Location', edit_location_path(@location)%>
     <%= link_to 'Destroy', @location, method: :delete, data: { confirm: 'Are you sure you want to delete this?' } %>
@@ -13,7 +13,7 @@
 
   <h4>Reviews</h4>
 
-  <% if @user %>
+  <% if current_user %>
     <input type="button" value="Add Review" id="reveal" onClick="reveal();" />
   <% end %>
 
@@ -22,14 +22,14 @@
   <div id="form" style="display:none;">
 
     <form action="/reviews" method="post">
-    <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>" >
-    <p><h5>New Review:</h5></p>
-    <input type="hidden" name="location_id" value="<%= @location.id %>" />
-    <p>Date visited: <input id="date_visited" type="textarea" rows="2" name="date_visited" value="<%= Time.now.strftime("%b %d, %Y %H:%M %Z") %>"></input></p>
-    <p><span><label for="stability">Stability Rating (10 for maximum stability)</label>
-    <input type="range" id="stability" name="stability" value="" min="0" max="10" step="1" placeholder="<%= @review.stability if @review %>"></input></span></p>
-    <p>Content: <input type="text" name="content" id="content" value="" placeholder="Slept like a baby here"></input></p>
-    <p><input type="submit" value="Submit Review" /></p>
+      <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>" >
+      <p><h5>New Review:</h5></p>
+      <input type="hidden" name="location_id" value="<%= @location.id %>" />
+      <p>Date visited: <input id="date_visited" type="textarea" rows="2" name="date_visited" value="<%= Time.now.strftime("%b %d, %Y %H:%M %Z") %>"></input></p>
+      <p><span><label for="stability">Stability Rating (10 for maximum stability)</label>
+      <input type="range" id="stability" name="stability" value="" min="0" max="10" step="1" placeholder="<%= @review.stability if @review %>"></input></span></p>
+      <p>Content: <input type="text" name="content" id="content" value="" placeholder="Slept like a baby here"></input></p>
+      <p><input type="submit" value="Submit Review" /></p>
     </form>
 
   </div>
@@ -46,7 +46,7 @@
         <p>Date Visited: <%= review.date_visited %></p>
       </div>
 
-      <% if current_user && review.user_id == @user.id %>
+      <% if current_user.admin || review.user_id == current_user.id %>
         <div class="links">
           <%= link_to 'Back', locations_path %></td>
           <%= link_to 'Edit', edit_review_path(review)%>
