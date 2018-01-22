@@ -3,8 +3,8 @@ class User < ApplicationRecord
   has_many :reviews
   has_many :locations, through: :reviews
 
-  validates :username, presence: true
-  validates :username, uniqueness: true
+  validates :username, presence: {message: "cannot be blank"}, allow_blank: false
+  validates :username, uniqueness: {message: "must be unique"}
 
   has_secure_password
 

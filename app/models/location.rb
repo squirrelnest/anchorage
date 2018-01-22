@@ -16,6 +16,14 @@ class Location < ApplicationRecord
   validates :lonlat, uniqueness: true
   validates :lonlat, presence: true
 
+  validate :lonlat_valid?, on: :create
+
+  def lonlat_valid?
+    if @lat.to_f < -90 || @lat.to_f > 90 || @lon.to_f < -180 || @lon.to_f > 180
+      errors.add(:lonlat, "latitude must be within -90 and 90, longitude must be within -180 and 180")
+    end
+  end
+
   def lat
     lonlat ? lonlat.lat : nil
   end
