@@ -3,14 +3,12 @@ Rails.application.routes.draw do
 
   root 'locations#index'
 
-  # resources :locations
+  # resources :locations & :reviews
 
   get '/locations/nearby' => 'locations#nearby'
-  resources :locations
-
-  # resources :reviews
-
-  resources :reviews
+  resources :locations do
+    resources :reviews, only: [:show, :index, :new]
+  end
 
   # resources :users
 
