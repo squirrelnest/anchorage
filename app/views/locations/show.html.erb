@@ -15,7 +15,9 @@
 
   <% if current_user %>
     <!-- <input type="button" value="Add Review" id="reveal" onClick="reveal();" /> -->
-    <%= link_to "New Review", new_location_review_path(@location) %>
+    <p>
+      <%= link_to "Add Review", new_location_review_path(@location) %>
+    </p>
   <% end %>
 
   <!-- Add Review to this Location  -->
@@ -38,23 +40,35 @@
   <!-- Existing reviews -->
 
   <div class="reviews">
-    <% @location.reviews.each do |review|  %>
 
-      <div class="review">
-        <p>Feedback: <%= review.content %></p>
-        <p>Stability: <%= review.stability %></p>
-        <p>Author: <%= review.user.username %></p>
-        <p>Date Visited: <%= review.date_visited %></p>
-      </div>
+    <table>
 
-      <% if current_user.admin || review.user_id == current_user.id %>
-        <div class="links">
-          <%= link_to 'Back', locations_path %></td>
-          <%= link_to 'Edit', edit_review_path(review)%>
-          <%= link_to 'Destroy', review, method: :delete, data: { confirm: 'Are you sure?' } %>
-        </div>
+        <td><u>Feedback</u></td>
+        <td><u>Stability</u></td>
+        <td><u>Author</u></td>
+        <td><u>Date Visited</u></td>
+        <td><u>Links</u></td>
+
+      <% @location.reviews.each do |review|  %>
+
+        <tr class="review">
+          <td><%= review.content %></td>
+          <td><%= review.stability %></td>
+          <td><%= review.user.username %></td>
+          <td><%= review.date_visited %></td>
+
+
+          <% if current_user.admin || review.user_id == current_user.id %>
+            <td class="links">
+              <%= link_to 'Show', review_path(review) %>
+              <%= link_to 'Edit', edit_review_path(review)%>
+              <%= link_to 'Destroy', review, method: :delete, data: { confirm: 'Are you sure?' } %>
+            </td>
+          <% end %>
+        </tr>
+
       <% end %>
+    </table>
 
-    <% end %>
   </div>
 </div>
