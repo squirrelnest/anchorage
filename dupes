@@ -1,0 +1,13 @@
+<% else %>
+
+  <p>Location nickname: <input id="nickname" type="text" name="nickname" value="" placeholder="My backyard"</input></p>
+  <p>Latitude: <input id="lat" type="text" name="lat" value=""></input>
+  Longitude: <input id="lon" type="text" name="lon" value=""></input>
+  <button onClick="getPosition()">Autofill</button></p>
+  <p>Date visited: <input id="date_visited" type="textarea" rows="2" name="date_visited" value="<%= Time.now.strftime("%b %d, %Y %H:%M %Z") %>"></input></p>
+
+  <p><span><label for="stability">Stability Rating (10 for maximum stability)</label>
+  <input type="range" id="stability" name="stability" value="" min="0" max="10" step="1" placeholder="<%= @review.stability if @review %>"></input></span></p>
+
+  <p>Content: <input type="text" name="content" id="content" value="" placeholder="Slept like a baby here"></input></p>
+  <p><%= submit_tag "Submit" %></p>

@@ -45,12 +45,12 @@ class ReviewsController < ApplicationController
 
   def destroy
     @review = Review.find(params[:id])
-    if @review.user_id == @user.id
+    if @review.user_id == @user.id || current_user.admin
       @review.destroy
-      redirect_to reviews_url
+      redirect_to locations_url
     else
       flash[:message] = "Can't touch what ain't yours."
-      redirect_to reviews_url
+      redirect_to locations_url
     end
   end
 

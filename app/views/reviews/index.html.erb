@@ -7,7 +7,7 @@
   stability: <%= review.stability %><br />
   content: <%= review.content %>
 
-  <% if @user.id == review.user_id %>
+  <% if current_user.id == review.user_id %>
   <div class="links">
     <%= link_to 'Edit', edit_review_path(review)%>
     <%= link_to 'Destroy', review, method: :delete, data: { confirm: 'Are you sure?' } %>
