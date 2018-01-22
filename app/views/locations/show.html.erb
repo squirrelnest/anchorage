@@ -14,7 +14,8 @@
   <h4>Reviews</h4>
 
   <% if current_user %>
-    <input type="button" value="Add Review" id="reveal" onClick="reveal();" />
+    <!-- <input type="button" value="Add Review" id="reveal" onClick="reveal();" /> -->
+    <%= link_to "New Review", new_location_review_path(@location) %>
   <% end %>
 
   <!-- Add Review to this Location  -->

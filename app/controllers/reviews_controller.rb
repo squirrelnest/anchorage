@@ -5,6 +5,7 @@ class ReviewsController < ApplicationController
   end
 
   def new
+    @location = Location.find_by(id: params[:location_id]) || Location.new
     @review = Review.new
   end
 
@@ -33,7 +34,6 @@ class ReviewsController < ApplicationController
   def update
     @review = Review.find(params[:id])
     if @review.user_id == @user.id
-      @review.location.update(location_params)
       @review.update(review_params)
       @review.save
       redirect_to review_path(@review)
@@ -57,7 +57,7 @@ class ReviewsController < ApplicationController
   private
 
   def review_params
-    params.permit(:content, :stability, :date_visited, :location_id)
+    params.require(:review).permit(:content, :stability, :date_visited, :location_id)
   end
 
   def location_params

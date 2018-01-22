@@ -7,8 +7,12 @@ Rails.application.routes.draw do
 
   get '/locations/nearby' => 'locations#nearby'
   resources :locations do
-    resources :reviews, only: [:show, :index, :new]
+    resources :reviews, only: [:show, :index, :new, :create]
   end
+
+  # resources :reviews
+
+  resources :reviews
 
   # resources :users
 

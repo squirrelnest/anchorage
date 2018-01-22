@@ -6,11 +6,19 @@ class LocationsController < ApplicationController
 
   def new
     @location = Location.new
+    @review = Review.new
   end
 
   def create
+    location_params = params.require(:location).permit(:nickname, :lon, :lat, reviews_attributes: [:date_visited, :stability, :content]).to_hash
+    location_params["reviews_attributes"][0]["user_id"] = current_user.id
     @location = Location.create(location_params)
-    redirect_to location_path(@location)
+    if @location.errors.any?
+      flash[:message] = @location.errors.full_messages.join("\n")
+      redirect_to new_location_path
+    else
+      redirect_to location_path(@location)
+    end
   end
 
   def show
@@ -53,7 +61,7 @@ class LocationsController < ApplicationController
   private
 
   def location_params
-    params.permit(:nickname, :lon, :lat)
+    params.require(:location).permit(:nickname, :lon, :lat, reviews_attributes: [:date_visited, :stability, :content])
   end
 
 end

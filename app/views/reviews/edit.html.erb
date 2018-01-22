@@ -1,5 +1,11 @@
 <h3>Edit Review</h3>
 
 <%= form_tag review_path(@review), method: "put", id: "edit-review" do %>
-  <%= render 'form' %>
+  <p>Date visited: <input id="date_visited" type="textarea" rows="2" name="review[date_visited]" value="<%= @review.date_visited %>"></input></p>
+
+  <p><span><label for="stability">Stability Rating (10 for maximum stability)</label>
+  <input type="range" id="stability" name="review[stability]" min="0" max="10" step="1" value="<%= @review.stability %>"></input></span></p>
+
+  <p>Content: <input type="text" name="review[content]" id="content" value="<%= @review.content %>" placeholder="Slept like a baby here"></input></p>
+  <p><%= submit_tag "Submit" %></p>
 <% end %>
