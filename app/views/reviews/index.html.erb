@@ -1,11 +1,11 @@
 <h3>All Reviews</h3>
 
 <% @reviews.each do |review| %>
-  <h4>name: <%= review.location.nickname %></h4>
-  latitude: <%= review.location.lat %><br />
-  longitude: <%= review.location.lon %><br />
-  stability: <%= review.stability %><br />
-  content: <%= review.content %>
+  <h4>name: <%= review.location.nickname if review.location != nil %></h4>
+  latitude: <%= review.location.lat if review.location != nil %><br />
+  longitude: <%= review.location.lon if review.location != nil %><br />
+  stability: <%= review.stability if review  %><br />
+  content: <%= review.content if review %>
 
   <% if current_user.id == review.user_id %>
   <div class="links">
