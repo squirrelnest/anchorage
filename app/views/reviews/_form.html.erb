@@ -10,8 +10,9 @@
       <%= f.label "Content:" %>
       <%= f.text_area :content, value: @review.content, placeholder: @review.content %><br>
 
-    <%= f.submit %>
+      <%= f.submit %>
   <% end %>
+
 <% else %>
 
   <p>Location nickname: <input id="nickname" type="text" name="nickname" value="" placeholder="My backyard"</input></p>

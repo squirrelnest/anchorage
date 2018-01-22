@@ -33,7 +33,7 @@ class ReviewsController < ApplicationController
 
   def update
     @review = Review.find(params[:id])
-    if @review.user_id == @user.id
+    if @review.user_id == @user.id || current_user.admin
       @review.update(review_params)
       @review.save
       redirect_to review_path(@review)

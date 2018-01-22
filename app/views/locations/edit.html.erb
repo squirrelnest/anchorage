@@ -1,5 +1,6 @@
 <h3>Edit Location</h3>
 
-<%= form_tag location_path(@location), method: "put" do %>
-  <%= render 'form' %>
+<%= form_for(@location) do |f| %>
+  <%= render 'locator' %>
+  <p><%= submit_tag "Submit" %></p>
 <% end %>

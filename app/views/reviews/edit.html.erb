@@ -7,5 +7,6 @@
   <input type="range" id="stability" name="review[stability]" min="0" max="10" step="1" value="<%= @review.stability %>"></input></span></p>
 
   <p>Content: <input type="text" name="review[content]" id="content" value="<%= @review.content %>" placeholder="Slept like a baby here"></input></p>
-  <p><%= submit_tag "Submit" %></p>
+
+<%= submit_tag "Submit" %>
 <% end %>
