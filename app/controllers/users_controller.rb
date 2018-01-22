@@ -14,6 +14,7 @@ class UsersController < ApplicationController
       session[:user_id] = @user.id
       redirect_to '/locations'
     else
+      flash[:message] = "That username is already taken."
       redirect_to '/users/new'
     end
   end

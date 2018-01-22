@@ -11,7 +11,12 @@
   <body>
 
     <%= render partial: 'layouts/header' %>
+
+    <% if flash[:message] %>
+      <p style="color: red;"><%= flash[:message] %></p>
+    <% end %>
+
     <%= yield %>
-    
+
   </body>
 </html>
