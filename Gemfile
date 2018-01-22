@@ -17,6 +17,12 @@ gem 'pg', '0.21.0'
 gem 'activerecord-postgis-adapter'
 # Load environment variables from .env
 gem 'dotenv', '~> 2.2', '>= 2.2.1'
+# dotenv-Rails
+gem 'dotenv-rails'
+# use omniauth for user authentication
+gem 'omniauth'
+# omniauth-facebook
+gem 'omniauth-facebook'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets

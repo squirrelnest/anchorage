@@ -19,4 +19,16 @@ class SessionsController < ApplicationController
     redirect_to locations_path
   end
 
+  def fb_auth
+    @user = User.find_or_create_by(username: auth['info']['name'], password_digest: auth['uid'])
+    session[:user_id] = @user.id
+    redirect_to my_reviews_path
+  end
+
+  private
+
+  def auth
+    request.env['omniauth.auth']
+  end
+
 end

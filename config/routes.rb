@@ -10,7 +10,7 @@ Rails.application.routes.draw do
     resources :reviews
   end
 
-  # resources :eeviews
+  # resources :reviews
 
   resources :reviews
 
@@ -25,5 +25,6 @@ Rails.application.routes.draw do
   post '/login' => 'sessions#create'
   get '/logout' => 'sessions#destroy'
   get '/signup' => 'users#new'
+  get '/auth/facebook/callback' => 'sessions#fb_auth'
 
 end

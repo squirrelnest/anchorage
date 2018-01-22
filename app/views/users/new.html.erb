@@ -1,8 +1,9 @@
-
 <%= form_tag({controller: 'users', action: 'create' }, {method: 'post'}) do %>
   <p>
     username: <input name='username'><br />
     password: <input name='password'>
   </p>
   <input type='submit' value='signup'>
+
+  <%= link_to('Log in with Facebook!', '/auth/facebook') %>
 <% end %>
