@@ -1,0 +1,29 @@
+@import "bootstrap";
+
+body {
+  padding:20px;
+}
+
+#map {
+  position:relative;
+  top:0;
+  width:50%;
+  height:720px;
+}
+
+.marker {
+    display: block;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    padding: 0;
+}
+
+.list {
+  height: 720px;
+  overflow: hidden;
+}
+
+.list-container {
+  height: 720px;
+}
