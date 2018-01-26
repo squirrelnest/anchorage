@@ -44,4 +44,16 @@ class Location < ApplicationRecord
     Location.where("ST_DWithin(locations.lonlat, ST_GeographyFromText('SRID=4326;POINT(:lon :lat)'), :distance)", lon: lon, lat: lat, distance: distance)
   end
 
+  def to_geojson
+    {
+      id: id,
+      nickname: nickname,
+      type: "Feature",
+      geometry: {
+        coordinates: [ lon, lat ],
+        type: "Point"
+      }
+    }
+  end
+
 end

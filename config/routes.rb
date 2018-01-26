@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   # resources :locations & :reviews
 
   get '/locations/nearby' => 'locations#nearby'
+  get '/locations/geojson' => 'locations#geojson'
   resources :locations do
     resources :reviews
   end
