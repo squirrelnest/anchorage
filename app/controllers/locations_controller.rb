@@ -2,7 +2,6 @@ class LocationsController < ApplicationController
 
   def index
     @locations = Location.all
-    @geojson = 'https://api.mapbox.com/datasets/v1/zerkonium/cjcv56iq008bh2yo5f7ar1m5a/features/f61212a1a542107f76bab47c2c6e18a8?access_token=pk.eyJ1IjoiemVya29uaXVtIiwiYSI6ImNqY2NrY281dzAxeXUyeHBnZWo5a2t3YXkifQ.KeqRj11iwks2f6HVBvB3_Q'
   end
 
   def new
