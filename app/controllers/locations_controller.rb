@@ -1,5 +1,10 @@
 class LocationsController < ApplicationController
 
+  def geojson
+    @locations = Location.all
+    render json: { locations: @locations.map(&:to_geojson) }
+  end
+
   def index
     @locations = Location.all
   end
@@ -7,11 +12,6 @@ class LocationsController < ApplicationController
   def new
     @location = Location.new
     @review = Review.new
-  end
-
-  def geojson
-    @locations = Location.all
-    render json: {locations: @locations.map(&:to_geojson) }
   end
 
   def create

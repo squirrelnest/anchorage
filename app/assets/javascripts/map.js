@@ -10,10 +10,10 @@ $(document).ready(function() {
       zoom: 1 // starting zoom
   });
 
-  // Add geolocate control to the map.
+  // Add geolocate control to the map
   map.addControl(new mapboxgl.GeolocateControl({
       positionOptions: {
-          enableHighAccuracy: true
+        enableHighAccuracy: true
       },
       trackUserLocation: true
   }));
@@ -21,24 +21,23 @@ $(document).ready(function() {
   // Get coordinates at mouse position
   map.on('mousemove', function (e) {
     document.getElementById('info').innerHTML =
-        // e.point is the x, y coordinates of the mousemove event relative
-        // to the top-left corner of the map
-        JSON.stringify(e.point) + '<br />' +
-        // e.lngLat is the longitude, latitude geographical position of the event
-        JSON.stringify(e.lngLat);
+      // e.point is the x, y coordinates of the mousemove event relative
+      // to the top-left corner of the map
+      JSON.stringify(e.point) + '<br />' +
+      // e.lngLat is the longitude, latitude geographical position of the event
+      JSON.stringify(e.lngLat);
   });
 
   // Define points to mark with markers
-
   // const url = 'https://api.mapbox.com/datasets/v1/zerkonium/cjcv56iq008bh2yo5f7ar1m5a/features?access_token=pk.eyJ1IjoiemVya29uaXVtIiwiYSI6ImNqY2NrY281dzAxeXUyeHBnZWo5a2t3YXkifQ.KeqRj11iwks2f6HVBvB3_Q';
   const url = '/locations/geojson';
-
   foo = $.get(url);
 
+  // create a DOM element for each point
   foo.done(function(geojson) {
-    // add markers to map
+
     geojson.locations.forEach(function(location) {
-      // create a DOM element for the location
+
       var el = document.createElement('div');
       el.className = 'marker';
       rand = Math.floor(Math.random() * 20);
@@ -47,7 +46,7 @@ $(document).ready(function() {
       el.style.height = '51px'; //location.properties.iconSize[1] + 'px';
 
       el.addEventListener('click', function() {
-          window.location.href= 'http://localhost:3000/locations/' + location.id;
+        window.location.href = 'http://localhost:3000/locations/' + location.id;
       });
 
       // add marker element to map
@@ -55,6 +54,7 @@ $(document).ready(function() {
           .setLngLat(location.geometry.coordinates)
           .addTo(map);
     });
-  })
+
+  });
 
 });
