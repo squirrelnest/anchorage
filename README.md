@@ -28,3 +28,5 @@ If you see an opportunity for improvement and can make the change yourself go ah
 Copyright (c) 2018 Purple Squirrel
 
 Purple Squirrel owns this app. However, Purple Squirrel supports the development and availability of materials in the public domain. Therefore, Purple Squirrel grants Users of Anchorage set forth in this repository rights to build upon the app.
+
+This project has been licensed under the MIT open source license: https://github.com/squirrelnest/anchorage/blob/master/LICENSE
