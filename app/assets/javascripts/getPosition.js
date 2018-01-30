@@ -4,12 +4,12 @@
 
 function getPosition() {
 
-  event.preventDefault()
+  event.preventDefault();
   navigator.geolocation.getCurrentPosition(showPosition);
 
   function showPosition(position) {
-      document.getElementById("lat").value = position.coords.latitude;
-      document.getElementById("lon").value = position.coords.longitude;
+      document.getElementById("location[lat]").value = position.coords.latitude;
+      document.getElementById("location[lon]").value = position.coords.longitude;
   }
 }
 

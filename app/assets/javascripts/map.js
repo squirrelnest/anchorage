@@ -1,4 +1,4 @@
-$(document).ready(function() {
+$(document).on('turbolinks:load', function() {
   // Set mapbox token
   mapboxgl.accessToken = 'pk.eyJ1IjoiemVya29uaXVtIiwiYSI6ImNqY2NrY281dzAxeXUyeHBnZWo5a2t3YXkifQ.KeqRj11iwks2f6HVBvB3_Q';
 
@@ -29,7 +29,6 @@ $(document).ready(function() {
   });
 
   // Define points to mark with markers
-  // const url = 'https://api.mapbox.com/datasets/v1/zerkonium/cjcv56iq008bh2yo5f7ar1m5a/features?access_token=pk.eyJ1IjoiemVya29uaXVtIiwiYSI6ImNqY2NrY281dzAxeXUyeHBnZWo5a2t3YXkifQ.KeqRj11iwks2f6HVBvB3_Q';
   const url = '/locations/geojson';
   foo = $.get(url);
 

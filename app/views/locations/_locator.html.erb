@@ -2,15 +2,15 @@
 
   <p>
   <%= f.label "Nickname:" %>
-  <%= f.text_field :nickname, name: 'location[nickname]', value: @location.nickname %>
+  <%= f.text_field :nickname, id: 'location[nickname]', name: 'location[nickname]', value: @location.nickname %>
   </p>
   <p>
   <%= f.label "Latitude:" %>
-  <%= f.text_field :latitude, name: 'location[lat]', value: @location.lat %>
+  <%= f.text_field :latitude, id: 'location[lat]', name: 'location[lat]', value: @location.lat %>
   </p>
   <p>
   <%= f.label "Longitude:" %>
-  <%= f.text_field :longitude, name: 'location[lon]', value: @location.lon %>
+  <%= f.text_field :longitude, id: 'location[lon]', name: 'location[lon]', value: @location.lon %>
   <button onClick="getPosition()">Use current location</button>
   </p>
 
