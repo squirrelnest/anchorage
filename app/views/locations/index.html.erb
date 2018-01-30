@@ -12,7 +12,7 @@
 
   <div class="col-lg-6 list-container">
     <div class="list">
-      <% @locations.group_by(&:country).each do |country, locations| %>
+      <% @locations.order(:country).group_by(&:country).each do |country, locations| %>
         <h3><a href="" onClick="showLocations(event)" data-country="<%= country %>"><%= country %></a></h3>
         <div class="country-list" id="country-list-<%= country %>"></div>
       <% end %>
