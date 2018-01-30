@@ -7,7 +7,7 @@
   <%= f.fields_for :reviews_attributes do |ff| %>
     <p>
     <%= ff.label "Date Visited:" %>
-    <%= ff.datetime_field :date_visited, name: 'location[reviews_attributes][][date_visited]', value: Time.now.strftime("%Y-%m-%dT%H:%M") %>
+    <%= ff.datetime_field :date_visited, name: 'location[reviews_attributes][][date_visited]', value: Time.now.strftime("%Y-%m-%dT%H:%M"), class: 'form-control' %>
     </p>
     <p>
     <%= ff.label "Stability (10 is maximum stability):" %>
@@ -15,7 +15,7 @@
     </p>
     <p>
     <%= ff.label "Content:" %>
-    <%= ff.text_area :content, name: 'location[reviews_attributes][][content]' %>
+    <%= ff.text_area :content, name: 'location[reviews_attributes][][content]', class: 'form-control' %>
     </p>
   <% end %>
 
