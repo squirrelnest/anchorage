@@ -4,9 +4,9 @@ Anchorage is a Rails app dedicated to helping sailors find and review anchorages
 # Installation
 
 1. Fork and clone this repo
-2. Migrate database with `rake db:migrate`
-3. Run `bundle install` to install dependencies
-4. Navigate to directory where you saved the repo
+2. Navigate to directory where you saved the repo
+3. Migrate database with `rake db:migrate`
+4. Run `bundle install` to install dependencies
 5. Type `rails s` and hit enter to start server and run app locally
 
 # Contributing to Anchorage
@@ -28,3 +28,5 @@ If you see an opportunity for improvement and can make the change yourself go ah
 Copyright (c) 2018 Purple Squirrel
 
 Purple Squirrel owns this app. However, Purple Squirrel supports the development and availability of materials in the public domain. Therefore, Purple Squirrel grants Users of Anchorage set forth in this repository rights to build upon the app.
+
+This project has been licensed under the MIT open source license: https://github.com/squirrelnest/anchorage/blob/master/LICENSE
