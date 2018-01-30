@@ -1,3 +1,8 @@
-<h3>Create New Review</h3>
+<h3>Create New Review for <%= @location ? @location.nickname : @review.location.nickname %></h3>
 
-<%= render 'form' %>
+<%= form_for([@location, @review]) do |f| %>
+  <%= render 'form', f: f %><br />
+  <%= f.submit 'Submit review' %>
+<% end %>
+<br />
+<p><button onclick='javascript:history.back()'>Back</button</p>

@@ -2,7 +2,7 @@
 
 <%= form_for(@location) do |f| %>
 
-  <%= render 'locator' %>
+  <%= render 'locator', f: f %>
 
   <%= f.fields_for :reviews_attributes do |ff| %>
     <p>
