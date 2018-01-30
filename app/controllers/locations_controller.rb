@@ -15,7 +15,7 @@ class LocationsController < ApplicationController
   end
 
   def create
-    location_params = params.require(:location).permit(:nickname, :lon, :lat, reviews_attributes: [:date_visited, :stability, :content]).to_hash
+    location_params = params.require(:location).permit(:nickname, :lon, :lat, :country, reviews_attributes: [:date_visited, :stability, :content]).to_hash
     location_params["reviews_attributes"][0]["user_id"] = current_user.id
     @location = Location.create(location_params)
     if @location.errors.any?
@@ -28,6 +28,10 @@ class LocationsController < ApplicationController
 
   def show
     @location = Location.find(params[:id])
+    respond_to do |format|
+      format.html { render :show }
+      format.json { render json: @location, status: 200 }
+    end
   end
 
   def edit
@@ -66,7 +70,7 @@ class LocationsController < ApplicationController
   private
 
   def location_params
-    params.require(:location).permit(:nickname, :lon, :lat, reviews_attributes: [:date_visited, :stability, :content])
+    params.require(:location).permit(:nickname, :lon, :lat, :country, reviews_attributes: [:date_visited, :stability, :content])
   end
 
 end

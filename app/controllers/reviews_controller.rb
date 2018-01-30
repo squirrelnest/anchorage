@@ -66,7 +66,7 @@ class ReviewsController < ApplicationController
   end
 
   def location_params
-    params.permit(:nickname, :lon, :lat)
+    params.permit(:nickname, :lon, :lat, :country)
   end
 
 end

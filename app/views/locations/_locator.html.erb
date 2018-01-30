@@ -1,8 +1,17 @@
-<div id="get-position">
-
-    <p>nickname: <input id="nickname" type="text" name="location[nickname]" value="<%= @location.nickname %>" placeholder="my backyard"></input></p>
-    latitude: <input id="lat" type="text" name="location[lat]" value="<%= @location.lat %>"></input>
-    longitude: <input id="lon" type="text" name="location[lon]" value="<%= @location.lon %>"></input>
-    <button onClick="getPosition()">Autofill</button>
-
-</div>
+<p>
+  <%= f.label "nickname" %>
+  <%= f.text_field :nickname, {id: "nickname"} %>
+</p>
+<p>
+  <%= f.label "latitude" %>
+  <%= f.text_field :lat, {id: "lat", onblur: "getCountry()"} %>
+</p>
+<p>
+  <%= f.label "longitude" %>
+  <%= f.text_field :lon, {id: "lon", onblur: "getCountry()"} %>
+</p>
+<p>
+  <%= f.label "country" %>
+  <%= f.text_field :country, {id: "country"} %>
+  <button onClick="getPosition()">Autofill Location</button>
+</p>

@@ -10,7 +10,7 @@ body {
   position:relative;
   top:0;
   width:50%;
-  height:720px;
+  height:600px;
 }
 
 .marker {
@@ -38,10 +38,16 @@ body {
 /* LIST */
 
 .list {
-  height: 720px;
-  overflow: hidden;
+  height: 600px;
+  overflow: auto;
 }
 
 .list-container {
   height: 720px;
+}
+
+/* FORMS */
+
+input[type=range] {
+  width: 25%;
 }

@@ -1,6 +1,6 @@
 class User < ApplicationRecord
 
-  has_many :reviews
+  has_many :reviews, dependent: :destroy
   has_many :locations, through: :reviews
 
   validates :username, presence: {message: "cannot be blank"}, allow_blank: false
