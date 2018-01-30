@@ -1,8 +1,22 @@
 class LocationsController < ApplicationController
 
+  require 'net/http'
+
+  def mapbox_token
+    render json: ENV['MAPBOX_TOKEN'].to_json
+  end
+
   def geojson
     @locations = Location.all
     render json: { locations: @locations.map(&:to_geojson) }
+  end
+
+  def get_country
+    lon = params[:lon]
+    lat = params[:lat]
+    uri = URI("https://api.mapbox.com/geocoding/v5/mapbox.places/" + lon + "," + lat + ".json?types=country&access_token=#{ENV['MAPBOX_TOKEN']}")
+    res = Net::HTTP.get_response(uri)
+    render json: res.body
   end
 
   def index

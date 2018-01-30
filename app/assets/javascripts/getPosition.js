@@ -7,19 +7,27 @@ function getPosition() {
   // prevent redirecting
   event.preventDefault();
 
-  // get position
+  // get user's position
   navigator.geolocation.getCurrentPosition(showPosition);
 
-  // add position to DOM as form values
+  // add user's position to DOM as form values
   function showPosition(position) {
       document.getElementById("lat").value = position.coords.latitude;
       document.getElementById("lon").value = position.coords.longitude;
 
-  // reverse geocode coordinates into countries
-  geocoder = $.get('https://api.mapbox.com/geocoding/v5/mapbox.places/' + position.coords.longitude + ',' + position.coords.latitude + '.json?types=country&access_token=pk.eyJ1IjoiemVya29uaXVtIiwiYSI6ImNqY2NrY281dzAxeXUyeHBnZWo5a2t3YXkifQ.KeqRj11iwks2f6HVBvB3_Q');
+      lat = position.coords.latitude;
+      lon = position.coords.longitude;
+  // reverse geocode coordinates to country
+    geocoder = $.get(`/locations/get_country/${lon}/${lat}`);
     geocoder.done(function(data) {
+
+      // autofill form field with country
       console.log("geocoded!");
-      document.getElementById("country").value = data.features[0].place_name;
+      if (data.features[0].place_name == null) {
+        document.getElementById("country").value = "None";
+      } else {
+        document.getElementById("country").value = data.features[0].place_name;
+      }
     });
 
   };
@@ -27,22 +35,29 @@ function getPosition() {
 
 function getCountry() {
 
-  // get position
+  // get current position
   navigator.geolocation.getCurrentPosition(showPosition);
 
-  // add position to DOM as form values
   function showPosition(position) {
 
-  // reverse geocode coordinates into countries
+  // retrieve longitude and latitude from form values
   lon = document.getElementById("lon").value;
   lat = document.getElementById("lat").value;
-  if (lat == "" || lon == "") {
+
+  // reverse geocode coordinates to country
+  if (lon == "" || lat == "") {
     return  // Exit early if only one field has been filled
   }
-  geocoder = $.get('https://api.mapbox.com/geocoding/v5/mapbox.places/' + lon + ',' + lat + '.json?types=country&access_token=pk.eyJ1IjoiemVya29uaXVtIiwiYSI6ImNqY2NrY281dzAxeXUyeHBnZWo5a2t3YXkifQ.KeqRj11iwks2f6HVBvB3_Q');
+  geocoder = $.get(`/locations/get_country/${lon}/${lat}`);
     geocoder.done(function(data) {
+
+      // autofill form field with country
       console.log("geocoded!");
-      document.getElementById("country").value = data.features[0].place_name;
+      if (data.features[0] == null) {
+        document.getElementById("country").value = "None";
+      } else {
+        document.getElementById("country").value = data.features[0].place_name;
+      }
     });
 
   };
@@ -54,8 +69,6 @@ function setCurrentLocation() {
   function showPosition(position) {
       document.cookie = `lat=${position.coords.latitude}`;
       document.cookie = `lon=${position.coords.longitude}`;
-      // session['lat'] = position.coords.latitude;
-      // session['lon'] = position.coords.longitude;
   }
 }
 

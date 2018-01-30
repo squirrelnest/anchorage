@@ -7,6 +7,8 @@ Rails.application.routes.draw do
 
   get '/locations/nearby' => 'locations#nearby'
   get '/locations/geojson' => 'locations#geojson'
+  get '/locations/get_country/:lon/:lat' => 'locations#get_country', :constraints => { :lon => /[^\/]+/, :lat => /[^\/]+/ }
+  get '/locations/mapbox_token' => 'locations#mapbox_token', :constraints => { :lon => /[^\/]+/, :lat => /[^\/]+/ }
   resources :locations do
     resources :reviews
   end
