@@ -1,4 +1,4 @@
-@import "bootstrap";
+/* @import "bootstrap"; */
 
 body {
   padding:20px;
@@ -44,4 +44,10 @@ body {
 
 .list-container {
   height: 720px;
+}
+
+/* FORMS */
+
+input[type=range] {
+  width: 25%;
 }

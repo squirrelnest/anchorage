@@ -24,16 +24,10 @@
 
   <div id="form" style="display:none;">
 
-    <form action="/reviews" method="post">
-      <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>" >
-      <p><h5>New Review:</h5></p>
-      <input type="hidden" name="location_id" value="<%= @location.id %>" />
-      <p>Date visited: <input id="date_visited" type="textarea" rows="2" name="date_visited" value="<%= Time.now.strftime("%b %d, %Y %H:%M %Z") %>"></input></p>
-      <p><span><label for="stability">Stability Rating (10 for maximum stability)</label>
-      <input type="range" id="stability" name="stability" value="" min="0" max="10" step="1" placeholder="<%= @review.stability if @review %>"></input></span></p>
-      <p>Content: <input type="text" name="content" id="content" value="" placeholder="Slept like a baby here"></input></p>
-      <p><input type="submit" value="Submit Review" /></p>
-    </form>
+    <%= form_for([Location.find(params[:id]), Review.new]) do |f| %>
+      <%= render partial: '/reviews/form.html.erb', locals: {f: f} %>
+      <%= f.submit 'Submit review' %>
+    <% end %>
 
   </div>
 
@@ -41,13 +35,13 @@
 
   <div class="reviews">
 
-    <table>
+    <table class="table">
 
-        <td><u>Feedback</u></td>
-        <td><u>Stability</u></td>
-        <td><u>Author</u></td>
-        <td><u>Date Visited</u></td>
-        <td><u>Links</u></td>
+        <th>Feedback</th>
+        <th>Stability</th>
+        <th>Author</th>
+        <th>Date Visited</th>
+        <th>Links</th>
 
       <% @location.reviews.each do |review|  %>
 
