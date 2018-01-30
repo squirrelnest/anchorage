@@ -5,11 +5,14 @@ class SessionsController < ApplicationController
 
   def create
     @user = User.find_by(username: params[:username])
-    if @user.authenticate(params[:password])
+    if @user == nil
+      flash[:message] = "Username can't be blank."
+      redirect_to login_path
+    elsif @user.authenticate(params[:password])
       session[:user_id] = @user.id
       redirect_to my_reviews_path
     else
-      flash[:message] = "Invalid username/password combo"
+      flash[:message] = "Invalid username/password combo."
       redirect_to login_path
     end
   end

@@ -14,7 +14,7 @@ class UsersController < ApplicationController
       session[:user_id] = @user.id
       redirect_to '/locations'
     else
-      flash[:message] = @user.errors.full_messages.join("/n") if @user.errors.any?
+      flash[:message] = @user.errors.full_messages.join(" ") if @user.errors.any?
       redirect_to '/users/new'
     end
   end
