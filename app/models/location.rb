@@ -5,12 +5,19 @@ class Location < ApplicationRecord
   has_many :reviews
   has_many :users, through: :reviews
 
-  accepts_nested_attributes_for :reviews
+  # accepts_nested_attributes_for :reviews
 
   validates :lonlat, uniqueness: true
   validates :lonlat, presence: true
 
   validate :lonlat_valid?, on: :create
+
+  def reviews_attributes=(reviews_attribute_sets=[])
+    reviews_attribute_sets.each do |attribute_set|
+      # #build calls Review.new() AND sets the foreign key (location_id) on the child object (review)
+      self.reviews.build(attribute_set)
+    end
+  end
 
   def lonlat_valid?
     if @lat.to_f < -90 || @lat.to_f > 90 || @lon.to_f < -180 || @lon.to_f > 180
