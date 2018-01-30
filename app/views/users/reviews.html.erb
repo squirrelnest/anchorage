@@ -1,7 +1,7 @@
 <h3>My Reviews</h3>
 
 <% @reviews.each do |review| %>
-  <h4><%= review.location.nickname %></h4>
+  <h4><%= link_to review.location.nickname, location_path(review.location) %></h4>
   latitude: <%= review.location.lat %><br />
   longitude: <%= review.location.lon %><br />
   stability: <%= review.stability %><br />

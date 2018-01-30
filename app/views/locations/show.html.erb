@@ -11,57 +11,57 @@
   </p>
   <% end %>
 
-  <h4>Reviews</h4>
+  <div id="reviews">
+    <h4>Reviews</h4>
 
-  <% if current_user %>
-    <!-- <input type="button" value="Add Review" id="reveal" onClick="reveal();" /> -->
-    <p>
-      <%= link_to "Add Review", new_location_review_path(@location) %>
-    </p>
-  <% end %>
+    <!-- Add Review to this Location  -->
 
-  <!-- Add Review to this Location  -->
+    <div id="form" style="display:none;">
 
-  <div id="form" style="display:none;">
-
-    <%= form_for([Location.find(params[:id]), Review.new]) do |f| %>
-      <%= render partial: '/reviews/form.html.erb', locals: {f: f} %>
-      <%= f.submit 'Submit review' %>
-    <% end %>
-
-  </div>
-
-  <!-- Existing reviews -->
-
-  <div class="reviews">
-
-    <table class="table">
-
-        <th>Feedback</th>
-        <th>Stability</th>
-        <th>Author</th>
-        <th>Date Visited</th>
-        <th>Links</th>
-
-      <% @location.reviews.each do |review|  %>
-
-        <tr class="review">
-          <td><%= review.content %></td>
-          <td><%= review.stability %></td>
-          <td><%= review.user.username %></td>
-          <td><%= review.date_visited %></td>
-
-          <% if (current_user && current_user.admin) || (current_user && review.user_id == current_user.id) %>
-            <td class="links">
-              <%= link_to 'Show', review_path(review) %>
-              <%= link_to 'Edit', edit_review_path(review)%>
-              <%= link_to 'Destroy', review_path(review), method: :delete, data: { confirm: 'Are you sure?' } %>
-            </td>
-          <% end %>
-        </tr>
-
+      <%= form_for([Location.find(params[:id]), Review.new]) do |f| %>
+        <%= render partial: '/reviews/form.html.erb', locals: {f: f} %>
+        <%= f.submit 'Submit review' %>
       <% end %>
-    </table>
 
+    </div>
+
+    <!-- Existing reviews -->
+
+    <div class="reviews-list">
+
+      <table class="table">
+
+          <th>Feedback</th>
+          <th>Stability</th>
+          <th>Author</th>
+          <th>Date Visited</th>
+          <th>Links</th>
+
+        <% @location.reviews.each do |review|  %>
+
+          <tr class="review">
+            <td><%= review.content %></td>
+            <td><%= review.stability %></td>
+            <td><%= review.user.username %></td>
+            <td><%= review.date_visited %></td>
+
+            <% if (current_user && current_user.admin) || (current_user && review.user_id == current_user.id) %>
+              <td class="links">
+                <%= link_to 'Show', review_path(review) %>
+                <%= link_to 'Edit', edit_review_path(review)%>
+                <%= link_to 'Destroy', review_path(review), method: :delete, data: { confirm: 'Are you sure?' } %>
+              </td>
+            <% end %>
+          </tr>
+
+        <% end %>
+      </table>
+      <% if current_user %>
+        <!-- <input type="button" value="Add Review" id="reveal" onClick="reveal();" /> -->
+        <p>
+          <%= link_to "Add Review", new_location_review_path(@location) %>
+        </p>
+      <% end %>
+    </div>
   </div>
 </div>

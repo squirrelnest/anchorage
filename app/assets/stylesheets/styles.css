@@ -46,6 +46,11 @@ body {
   height: 720px;
 }
 
+#reviews {
+  background-color: #edf6f9;
+  padding: 10px;
+}
+
 /* FORMS */
 
 input[type=range] {
