@@ -4,9 +4,10 @@ Anchorage is a Rails app dedicated to helping sailors review and find quality an
 # Installation
 
 1. Fork and clone this repo
-2. Run bundle install to install dependencies
-3. Navigate to directory where you saved the repo
-4. Type rails s and hit enter to run app locally
+2. Migrate database with `rake db:migrate`
+3. Run `bundle install` to install dependencies
+4. Navigate to directory where you saved the repo
+5. Type `rails s` and hit enter to start server and run app locally
 
 # Contributing to Anchorage
 We're really excited that you're about to contribute to the Anchorage app. If this is your first time contributing, please continue reading to learn how to make the most meaningful and useful impact possible.
