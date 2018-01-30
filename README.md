@@ -1,12 +1,12 @@
 # Description
-Anchorage is a Rails app dedicated to helping sailors review and find quality anchorages around the world
+Anchorage is a Rails app dedicated to helping sailors find and review anchorages around the world
 
 # Installation
 
 1. Fork and clone this repo
-2. Migrate database with `rake db:migrate`
-3. Run `bundle install` to install dependencies
-4. Navigate to directory where you saved the repo
+2. Navigate to directory where you saved the repo
+3. Migrate database with `rake db:migrate`
+4. Run `bundle install` to install dependencies
 5. Type `rails s` and hit enter to start server and run app locally
 
 # Contributing to Anchorage
@@ -19,10 +19,10 @@ If you notice a problem with the app that you believe needs improvement but you'
 ## Submitting a Pull Request to Suggest an Improvement
 If you see an opportunity for improvement and can make the change yourself go ahead and use a typical git workflow to make it happen:
 
-1. Fork this curriculum repository
+1. Fork this repository
 2. Make the change on your fork, with descriptive commits in the standard format
 3. Open a Pull Request against this repo
-4. A curriculum owner will review your change and approve or comment on it in due course.
+4. Repo owner will review your change and approve or comment on it in due course
 
 # License
 Copyright (c) 2018 Purple Squirrel
