@@ -2,7 +2,8 @@ $(document).ready(function() {
   // Set mapbox token
    $.get('/locations/mapbox_token').done(function(data) {
 
-    mapboxgl.accessToken = data
+    mapboxgl.accessToken = data;
+
     // Create map
     var map = new mapboxgl.Map({
         container: 'map', // container id
@@ -20,17 +21,32 @@ $(document).ready(function() {
     }));
 
     // Get coordinates at mouse position
-    map.on('mousemove', function (e) {
-      document.getElementById('info').innerHTML =
-        // e.point is the x, y coordinates of the mousemove event relative
-        // to the top-left corner of the map
-        JSON.stringify(e.point) + '<br />' +
-        // e.lngLat is the longitude, latitude geographical position of the event
-        JSON.stringify(e.lngLat);
+    // map.on('mousemove', function (e) {
+    //   document.getElementById('info').innerHTML =
+    //     // e.point is the x, y coordinates of the mousemove event relative
+    //     // to the top-left corner of the map
+    //     JSON.stringify(e.point) + '<br />' +
+    //     // e.lngLat is the longitude, latitude geographical position of the event
+    //     JSON.stringify(e.lngLat);
+    // });
+
+    // Center the map on the coordinates of clicked mouse position
+    map.on('click', function (e) {
+      map.flyTo({
+        center: e.lngLat,
+        zoom: 3
+      });
+
+      // open a popup at location
+      html = `<a href='/locations/new/${e.lngLat.lng}/${e.lngLat.lat}'>Create review here?<br />${e.lngLat}</a>`;
+      new mapboxgl.Popup(e)
+          .setLngLat(e.lngLat)
+          .setHTML(html)
+          .addTo(map);
+
     });
 
     // Define points to mark with markers
-    // const url = "https://api.mapbox.com/datasets/v1/zerkonium/cjcv56iq008bh2yo5f7ar1m5a/features?access_token=#{ENV[MAPBOX_TOKEN]}";
     const url = '/locations/geojson';
     foo = $.get(url);
 

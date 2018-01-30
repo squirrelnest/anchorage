@@ -5,19 +5,16 @@
 <!-- Map of anchorages -->
 
   <div class="col-lg-6" id='map' >
-
     <pre id='info'></pre>
-
   </div>
 
-  <!-- List of locations -->
+<!-- List of locations -->
 
   <div class="col-lg-6 list-container">
     <div class="list">
-      <% @locations.each do |location| %>
-        <h4><%= link_to location.nickname, location_path(location) %></h4>
-        latitude: <%= location.lat %><br />
-        longitude: <%= location.lon %>
+      <% @locations.group_by(&:country).each do |country, locations| %>
+        <h3><a href="" onClick="showLocations(event)" data-country="<%= country %>"><%= country %></a></h3>
+        <div class="country-list" id="country-list-<%= country %>"></div>
       <% end %>
     </div>
   </div>

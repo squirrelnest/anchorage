@@ -2,8 +2,13 @@ class LocationsController < ApplicationController
 
   require 'net/http'
 
+  def by_country
+    @locations = Location.where(country: params[:country])
+    render json: { locations: @locations.map {|location| LocationSerializer.new(location, :scope => current_user) } }
+  end
+
   def mapbox_token
-    render json: ENV['MAPBOX_TOKEN'].to_json
+    render json: ENV['MAPBOX_MAP_TOKEN'].to_json
   end
 
   def geojson
@@ -14,7 +19,7 @@ class LocationsController < ApplicationController
   def get_country
     lon = params[:lon]
     lat = params[:lat]
-    uri = URI("https://api.mapbox.com/geocoding/v5/mapbox.places/" + lon + "," + lat + ".json?types=country&access_token=#{ENV['MAPBOX_TOKEN']}")
+    uri = URI("https://api.mapbox.com/geocoding/v5/mapbox.places/" + lon + "," + lat + ".json?types=country&access_token=#{ENV['MAPBOX_GEOCODING_TOKEN']}")
     res = Net::HTTP.get_response(uri)
     render json: res.body
   end
@@ -24,7 +29,7 @@ class LocationsController < ApplicationController
   end
 
   def new
-    @location = Location.new
+    @location = Location.new(lon: params[:lon], lat: params[:lat])
     @review = Review.new
   end
 

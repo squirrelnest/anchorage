@@ -1,5 +1,3 @@
-@import "bootstrap";
-
 body {
   padding:20px;
 }
@@ -14,26 +12,31 @@ body {
 }
 
 .marker {
-    display: block;
-    border: none;
-    border-radius: 50%;
-    cursor: pointer;
-    padding: 0;
+  display: block;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  padding: 0;
 }
 
 #info {
-       float:top;
-       position: relative;
-       margin: 0px auto;
-       width: 50%;
-       padding: 10px;
-       border: none;
-       border-radius: 3px;
-       font-size: 12px;
-       text-align: center;
-       color: #222;
-       background: #fff;
-   }
+  float:top;
+  position: relative;
+  margin: 0px auto;
+  width: 50%;
+  padding: 10px;
+  border: none;
+  border-radius: 3px;
+  font-size: 12px;
+  text-align: center;
+  color: #222;
+  background: #fff;
+}
+
+.mapboxgl-popup {
+  max-width: 400px;
+  font: 12px/20px 'Helvetica Neue', Arial, Helvetica, sans-serif;
+}
 
 /* LIST */
 
