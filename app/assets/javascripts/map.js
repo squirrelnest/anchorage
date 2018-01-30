@@ -1,4 +1,4 @@
-$(document).ready(function() {
+$(document).on('turbolinks:load', function() {
   // Set mapbox token
    $.get('/locations/mapbox_token').done(function(data) {
 
@@ -43,7 +43,6 @@ $(document).ready(function() {
           .setLngLat(e.lngLat)
           .setHTML(html)
           .addTo(map);
-
     });
 
     // Define points to mark with markers
