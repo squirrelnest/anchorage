@@ -1,3 +1,7 @@
+p {
+  color: white;
+}
+
 #header {
   padding: 20px;
 }
@@ -41,19 +45,66 @@
 /* LIST */
 
 .list-heading {
+  color: white;
 }
 
 .list {
   height: 540px;
+  padding: 0px;
   overflow: auto;
 }
 
+
 .list-container {
+  padding: 0px;
+  background-color: #212121;
   height: 600px;
+}
+
+.list-container div {
+  margin: 0px;
 }
 
 /* FORMS */
 
+form p {
+  color: black;
+}
+
 input[type=range] {
   width: 25%;
+}
+
+/* REVIEWS */
+
+#review, .list h3 {
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+#review:hover {
+  background-color: #8495a5;
+}
+
+#review a:hover {
+  color: white;
+}
+
+.review-preview {
+  background-color: #8495a5;
+  padding: 10px;
+}
+
+.review-content {
+  font-weight: bold;
+}
+
+#overlay {
+  margin: 20px;
+  align-self: center;
+}
+
+#overlay-container {
+  background-color: #212121;
+  height: 600px;
 }

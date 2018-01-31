@@ -8,8 +8,8 @@
 <!-- List of locations -->
 
   <div class="col-lg-3 list-container">
-    <div class="col-lg-12 list-heading"><h3>All Locations</h3></div>
-    <div class="col-lg-12 list">
+    <div class="col-lg-12 list-heading row"><h3>All Locations</h3></div>
+    <div class="col-lg-12 list row">
       <% @locations.order(:country).group_by(&:country).each do |country, locations| %>
         <h3><a href="" onClick="showLocations(event)" data-country="<%= country %>"><%= country %></a></h3>
         <div class="country-list" id="country-list-<%= country %>"></div>
@@ -19,7 +19,9 @@
 
 <!-- Overlay-->
 
-  <div class="col-lg-3" id='overlay'>
+  <div class="col-lg-3" id='overlay-container'>
+    <div class="col-lg-12 row" id='overlay'>
+    </div>
   </div>
 
 </div>
