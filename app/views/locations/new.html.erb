@@ -1,23 +1,27 @@
-<h3>Add New Anchorage</h3>
+<div class="col-md-12">
 
-<%= form_for(@location) do |f| %>
+  <h3>Add New Anchorage</h3>
 
-  <%= render 'locator', f: f %>
+  <%= form_for(@location) do |f| %>
 
-  <%= f.fields_for :reviews_attributes do |ff| %>
-    <p>
-    <%= ff.label "Date Visited:" %>
-    <%= ff.datetime_field :date_visited, name: 'location[reviews_attributes][][date_visited]', value: Time.now.strftime("%Y-%m-%dT%H:%M") %>
-    </p>
-    <p>
-    <%= ff.label "Stability (10 is maximum stability):" %>
-    <%= ff.range_field :stability, name: 'location[reviews_attributes][][stability]', in: 0..10, step: '1' %>
-    </p>
-    <p>
-    <%= ff.label "Content:" %><br />
-    <%= ff.text_area :content, name: 'location[reviews_attributes][][content]' %>
-    </p>
+    <%= render 'locator', f: f %>
 
-    <%= f.submit 'Submit' %>
+    <%= f.fields_for :reviews_attributes do |ff| %>
+      <p>
+      <%= ff.label "Date Visited:" %>
+      <%= ff.datetime_field :date_visited, name: 'location[reviews_attributes][][date_visited]', value: Time.now.strftime("%Y-%m-%dT%H:%M") %>
+      </p>
+      <p>
+      <%= ff.label "Stability (10 is maximum stability):" %>
+      <%= ff.range_field :stability, name: 'location[reviews_attributes][][stability]', in: 0..10, step: '1' %>
+      </p>
+      <p>
+      <%= ff.label "Content:" %><br />
+      <%= ff.text_area :content, name: 'location[reviews_attributes][][content]' %>
+      </p>
+
+      <%= f.submit 'Submit' %>
+    <% end %>
   <% end %>
-<% end %>
+  
+</div>

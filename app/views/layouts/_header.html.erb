@@ -1,15 +1,16 @@
-<div id="header">
+<div class="navbar navbar-toggleable-md" id="header">
 
-  <div id="logo" style="display: inline-block; width: 200px;"><h2>ANCHORAGE</h2></div>
+  <div class="navbar-brand">
+    <h3><a href="/locations" id="logo">ANCHORAGE</a></h3>
+  </div>
 
-  <div id="navbar" style="display: inline-block; float: right; margin: 20px;">
+  <div class="navbar-nav">
 
-    <%= link_to 'Home', locations_path %> |
-
+    <%= link_to 'Home', locations_path, html: {class: 'nav-item nav-link'} %> |
     <% if current_user != nil %>
-      <%= link_to 'Add Anchorage', new_location_path %> |
-      <%= link_to 'My Reviews', my_reviews_path %> |
-      <%= link_to 'Nearby', locations_nearby_path %> |
+      <%= link_to 'Add Anchorage', new_location_path, html: {class: 'nav-item nav-link'} %> |
+      <%= link_to 'My Reviews', my_reviews_path, html: {class: 'nav-item nav-link'} %> |
+      <%= link_to 'Nearby', locations_nearby_path, html: {class: 'nav-item nav-link'} %> |
     <% end %>
 
     <% unless (controller_name == "users" && action_name == "new") ||

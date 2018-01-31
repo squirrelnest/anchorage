@@ -38,7 +38,7 @@ $(document).on('turbolinks:load', function() {
       });
 
       // open a popup at location
-      html = `<a href='/locations/new/${e.lngLat.lng}/${e.lngLat.lat}'>Create review here?<br />${e.lngLat}</a>`;
+      html = `<a href='#' onClick='createReview()'>Create review here?<br />${e.lngLat}</a>`;
       new mapboxgl.Popup(e)
           .setLngLat(e.lngLat)
           .setHTML(html)

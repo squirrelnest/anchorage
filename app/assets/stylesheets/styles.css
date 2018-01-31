@@ -2,8 +2,25 @@ p {
   color: white;
 }
 
-#header {
-  padding: 20px;
+/* NAV */
+
+.navbar {
+  margin: 0;
+  height: 70px;
+}
+
+.navbar-nav {
+  display: inline-block;
+  height: 100%;
+  padding: 25px;
+  position: absolute;
+  right: 0px;
+}
+
+.navbar-brand {
+  display: inline-block;
+  padding: 0px 25px;
+  height: 100%;
 }
 
 /* MAP */
@@ -73,6 +90,15 @@ form p {
 
 input[type=range] {
   width: 25%;
+}
+
+.sliding-form {
+  border-radius: 0px;
+  left: 100px;
+  z-index: 2000;
+  background-color: red;
+  display: block;
+  height: 600px;
 }
 
 /* REVIEWS */
