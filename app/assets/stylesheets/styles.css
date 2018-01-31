@@ -82,12 +82,23 @@ input[type=range] {
   padding-right: 15px;
 }
 
+#review, .list h3 :hover {
+  color: white;
+  text-decoration: none;
+}
+
+#review, .list h3 :focus {
+  color: white;
+  text-decoration: none;
+}
+
 #review:hover {
   background-color: #8495a5;
 }
 
 #review a:hover {
   color: white;
+  text-decoration: none;
 }
 
 .review-preview {
