@@ -1,5 +1,5 @@
-body {
-  padding:20px;
+#header {
+  padding: 20px;
 }
 
 /* MAP */
@@ -40,13 +40,16 @@ body {
 
 /* LIST */
 
+.list-heading {
+}
+
 .list {
-  height: 600px;
+  height: 540px;
   overflow: auto;
 }
 
 .list-container {
-  height: 720px;
+  height: 600px;
 }
 
 /* FORMS */
