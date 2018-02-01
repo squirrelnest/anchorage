@@ -5,6 +5,7 @@
   <%= render 'locator', f: f %>
 
   <%= f.fields_for :reviews_attributes do |ff| %>
+
     <p>
     <%= ff.label "Date Visited:" %>
     <%= ff.datetime_field :date_visited, name: 'location[reviews_attributes][][date_visited]', value: Time.now.strftime("%Y-%m-%dT%H:%M"), class: 'form-control' %>
@@ -17,6 +18,7 @@
     <%= ff.label "Content:" %>
     <%= ff.text_area :content, name: 'location[reviews_attributes][][content]', class: 'form-control' %>
     </p>
+
   <% end %>
 
   <%= f.submit 'Submit new location and review' %>

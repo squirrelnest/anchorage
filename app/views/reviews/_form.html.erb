@@ -1,31 +1,12 @@
-<% if @review %>
-
-  <p>
-  <%= f.label "Date Visited:" %>
-  <%= f.datetime_field :date_visited, value: Time.now.strftime("%Y-%m-%dT%H:%M"), class: 'form-control' %>
-  </p>
-  <p>
-  <%= f.label "Stability (10 is maximum stability):" %>
-  <%= f.range_field :stability, in: 0..10, step: '1', value: @review.stability, placeholder: @review.stability %>
-  </p>
-  <p>
-  <%= f.label "Content:" %>
-  <%= f.text_area :content, value: @review.content, placeholder: @review.content, class: 'form-control' %>
-  </p>
-
-<% else %>
-
-  <p>
-  <%= f.label "Date Visited:" %>
-  <%= f.datetime_field :date_visited, value: Time.now.strftime("%Y-%m-%dT%H:%M"), class: 'form-control' %>
-  </p>
-  <p>
-  <%= f.label "Stability (10 is maximum stability):" %>
-  <%= f.range_field :stability, in: 0..10, step: '1' %>
-  </p>
-  <p>
-  <%= f.label "Content:" %>
-  <%= f.text_area :content, class: 'form-control' %>
-  </p>
-
-<% end %>
+<p>
+<%= f.label "Date Visited:" %>
+<%= f.datetime_field :date_visited, value: Time.now.strftime("%Y-%m-%dT%H:%M"), class: 'form-control' %>
+</p>
+<p>
+<%= f.label "Stability (10 is maximum stability):" %>
+<%= f.range_field :stability, in: 0..10, step: '1', value: @review.stability, placeholder: @review.stability %>
+</p>
+<p>
+<%= f.label "Content:" %>
+<%= f.text_area :content, value: @review.content, placeholder: @review.content, class: 'form-control' %>
+</p>

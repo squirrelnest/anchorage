@@ -4,28 +4,20 @@
   latitude: <%= @location.lonlat.lat %><br />
   longitude: <%= @location.lonlat.lon %><br />
 
+  <!-- Edit or destroy location -->
+
   <% if current_user && current_user.admin %>
   <p>
-    <%= link_to 'Edit Location', edit_location_path(@location)%>
-    <%= link_to 'Destroy', @location, method: :delete, data: { confirm: 'Are you sure you want to delete this?' } %>
+    <%= link_to 'Edit Location', edit_location_path(@location)%> | 
+    <%= link_to 'Delete Location', @location, method: :delete, data: { confirm: 'Are you sure you want to delete this?' } %>
   </p>
   <% end %>
 
+  <!-- Existing reviews -->
+
   <div id="reviews">
+
     <h4>Reviews</h4>
-
-    <!-- Add Review to this Location  -->
-
-    <div id="form" style="display:none;">
-
-      <%= form_for([Location.find(params[:id]), Review.new]) do |f| %>
-        <%= render partial: '/reviews/form.html.erb', locals: {f: f} %>
-        <%= f.submit 'Submit review' %>
-      <% end %>
-
-    </div>
-
-    <!-- Existing reviews -->
 
     <div class="reviews-list">
 
@@ -56,12 +48,15 @@
 
         <% end %>
       </table>
+
+      <!-- Add Review to this Location  -->
+
       <% if current_user %>
-        <!-- <input type="button" value="Add Review" id="reveal" onClick="reveal();" /> -->
         <p>
           <%= link_to "Add Review", new_location_review_path(@location) %>
         </p>
       <% end %>
+
     </div>
   </div>
 </div>

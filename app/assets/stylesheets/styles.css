@@ -39,7 +39,7 @@ body {
 
 .list {
   height: 720px;
-  overflow: hidden;
+  overflow: auto;
 }
 
 .list-container {

@@ -28,6 +28,7 @@ class LocationsController < ApplicationController
 
   def show
     @location = Location.find(params[:id])
+    @review = Review.new
   end
 
   def edit
@@ -51,7 +52,7 @@ class LocationsController < ApplicationController
       Location.find(params[:id]).destroy
       redirect_to locations_url
     else
-      flash[:message] = "Only admins can do that."
+      flash[:message] = "Only admins can destroy locations."
       redirect_to locations_url
     end
   end
