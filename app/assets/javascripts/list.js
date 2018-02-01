@@ -1,7 +1,6 @@
 function showLocations(event) {
 
   event.preventDefault();
-  event.stopPropagation();
   country = event.target.attributes['data-country'].nodeValue;
   locations = $.get(`/locations/by_country/${country}`);
 

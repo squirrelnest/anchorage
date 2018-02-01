@@ -6,11 +6,11 @@
 
   <div class="navbar-nav">
 
-    <%= link_to 'Home', locations_path, html: {class: 'nav-item nav-link'} %> |
+    <%= link_to 'Home', locations_path, class: 'nav-item nav-link' %> |
     <% if current_user != nil %>
-      <%= link_to 'Add Anchorage', new_location_path, html: {class: 'nav-item nav-link'} %> |
-      <%= link_to 'My Reviews', my_reviews_path, html: {class: 'nav-item nav-link'} %> |
-      <%= link_to 'Nearby', locations_nearby_path, html: {class: 'nav-item nav-link'} %> |
+      <%= link_to 'Add Anchorage', 'javascript:void(0)', class: 'nav-item nav-link', onclick: 'createReview(event)' %> |
+      <%= link_to 'My Reviews', my_reviews_path, class: 'nav-item nav-link' %> |
+      <%= link_to 'Nearby', locations_nearby_path, class: 'nav-item nav-link' %> |
     <% end %>
 
     <% unless (controller_name == "users" && action_name == "new") ||

@@ -66,6 +66,7 @@ $(document).on('turbolinks:load', function() {
           $('#overlay-container').css("background-color", "#8495a5");
           $.get(`/locations/${location.id}.json`, function(data) {
             $('#overlay').empty();
+            // show each review in the overlay
             data.reviews.forEach(function(review) {
               html = `<div class="review-preview row"><p class="review-content">"${review.content}"</p><p>Stability rating: ${review.stability}</p><p>Reviewed: ${review.date_visited}</p></div>`;
               $('#overlay-container').css("background-color", "#8495a5");

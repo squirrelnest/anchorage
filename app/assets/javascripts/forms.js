@@ -2,8 +2,10 @@ function createReview(event) {
   event.preventDefault();
 
   // prefill form fields
-  $('#lat').val(event.target.attributes['data-lat'].nodeValue);
-  $('#lon').val(event.target.attributes['data-lon'].nodeValue);
+  if (event.target.attributes['data-lat'] !== undefined) {
+    $('#lat').val(event.target.attributes['data-lat'].nodeValue);
+    $('#lon').val(event.target.attributes['data-lon'].nodeValue);
+  }
 
   // slide out form
   $('#review-form').css("left", "50%");
