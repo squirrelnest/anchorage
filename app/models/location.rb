@@ -26,11 +26,13 @@ class Location < ApplicationRecord
   end
 
   def lat
-    lonlat ? lonlat.lat : @lat
+    # returns instance value (ephemeral, in-memory value) if instance has already been created, else it returns the persisted value from the database
+    # if there's neither instance value or persisted lonlat value, then return nil
+    @lat ? @lat : (lonlat ? lonlat.lat : nil)
   end
 
   def lon
-    lonlat ? lonlat.lon : @lon
+    @lon ? @lon : (lonlat ? lonlat.lon : nil)
   end
 
   def distance(location)
@@ -43,9 +45,13 @@ class Location < ApplicationRecord
     super
   end
 
+  # Instance level method #nearby
+
   def nearby(distance)
     self.class.nearby(self.lat, self.lon, distance)
   end
+
+  # Class level method #nearby
 
   def self.nearby(lat, lon, distance)
     Location.where("ST_DWithin(locations.lonlat, ST_GeographyFromText('SRID=4326;POINT(:lon :lat)'), :distance)", lon: lon, lat: lat, distance: distance)

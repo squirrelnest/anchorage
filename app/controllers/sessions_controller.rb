@@ -6,7 +6,7 @@ class SessionsController < ApplicationController
   def create
     @user = User.find_by(username: params[:username])
     if @user == nil
-      flash[:message] = "Username can't be blank."
+      flash[:message] = "Username not found."
       redirect_to login_path
     elsif @user.authenticate(params[:password])
       session[:user_id] = @user.id
