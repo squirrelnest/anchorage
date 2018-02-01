@@ -23,6 +23,15 @@ p {
   height: 100%;
 }
 
+/* LATEST */
+
+#latest {
+  padding-left: 50px;
+  color: white;
+  background: #018bc6;
+  height: 100px;
+}
+
 /* MAP */
 
 #map {
@@ -33,8 +42,11 @@ p {
 }
 
 .marker {
+  background-color: red;
+  width: 15px;
+  height: 15px;
   display: block;
-  border: none;
+  border: solid white 0.2em;
   border-radius: 50%;
   cursor: pointer;
   padding: 0;

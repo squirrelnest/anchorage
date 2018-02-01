@@ -20,15 +20,22 @@
 <!-- Overlay-->
 
   <div class="col-lg-3" id='overlay-container'>
-    <div class="col-lg-12 row" id='overlay'>
-    </div>
+    <div class="col-lg-12 row" id='overlay'></div>
   </div>
 
 <!-- Form -->
 
   <div class="sliding-form" id="review-form">
-    <p>hello hello</p>
+    <%= form_for(Location.new) do |f| %>
+      <%= render '/locations/locator', f: f %>
+      <%= f.submit 'Submit' %>
+    <% end %>
+    <br />
     <button onClick="closeForm()">Cancel</button>
   </div>
+
+<!-- Latest news and updates -->
+
+  <div class="col-lg-12 row" id='latest'></div>
 
 </div>

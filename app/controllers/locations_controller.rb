@@ -35,6 +35,10 @@ class LocationsController < ApplicationController
   def new
     @location = Location.new(lon: params[:lon], lat: params[:lat])
     @review = Review.new
+    respond_to do |format|
+      format.html { render :index }
+      format.json { render json: @location, status: 200 }
+    end
   end
 
   def create
@@ -45,7 +49,7 @@ class LocationsController < ApplicationController
       flash[:message] = @location.errors.full_messages.join("\n")
       redirect_to new_location_path
     else
-      redirect_to location_path(@location)
+      render json: @location, status: 201
     end
   end
 

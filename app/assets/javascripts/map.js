@@ -20,29 +20,26 @@ $(document).on('turbolinks:load', function() {
         trackUserLocation: true
     }));
 
-    // Get coordinates at mouse position
-    // map.on('mousemove', function (e) {
-    //   document.getElementById('info').innerHTML =
-    //     // e.point is the x, y coordinates of the mousemove event relative
-    //     // to the top-left corner of the map
-    //     JSON.stringify(e.point) + '<br />' +
-    //     // e.lngLat is the longitude, latitude geographical position of the event
-    //     JSON.stringify(e.lngLat);
-    // });
-
     // Center the map on the coordinates of clicked mouse position
     map.on('click', function (e) {
       map.flyTo({
-        center: e.lngLat,
-        zoom: 3
+        center: e.lngLat
+        // zoom: 3
       });
 
-      // open a popup at location
-      html = `<a href='#' onClick='createReview()'>Create review here?<br />${e.lngLat}</a>`;
-      new mapboxgl.Popup(e)
-          .setLngLat(e.lngLat)
-          .setHTML(html)
-          .addTo(map);
+      // Clear overlay div if you click off a marker
+      // TODO: refactor to use best practice: removeClass() and addClass() to change css styles, animate, show/reveal
+      $('#overlay').empty();
+      $('#overlay-container').css('background-color', '#212121');
+
+      // open a popup at location if an anchorage does not already exist here
+        html = `<a href='#' onClick='createReview(event)' data-lon='${e.lngLat.lng}' data-lat='${e.lngLat.lat}'>Create review here?<br />${e.lngLat}</a>`;
+        popup = new mapboxgl.Popup(e)
+            .setLngLat(e.lngLat)
+            .setHTML(html)
+            .addTo(map);
+
+      // TODO: when user clicks X button to close popup, form should slide away if it was opened
     });
 
     // Define points to mark with markers
@@ -56,13 +53,24 @@ $(document).on('turbolinks:load', function() {
 
         var el = document.createElement('div');
         el.className = 'marker';
-        rand = Math.floor(Math.random() * 20);
-        el.style.backgroundImage = 'url(https://placekitten.com/g/' + (rand + 40) + '/' + (rand + 40) + ')';
-        el.style.width = '51px'; //location.properties.iconSize[0] + 'px';
-        el.style.height = '51px'; //location.properties.iconSize[1] + 'px';
 
-        el.addEventListener('click', function() {
-          window.location.href = '/locations/' + location.id;
+        el.addEventListener('click', function(event) {
+          event.preventDefault();
+          event.stopPropagation();
+          // clear popups if they exist
+          if (typeof popup !== "undefined") {
+            popup.remove();
+          }
+          // window.location.href = '/locations/' + location.id;
+          $('#overlay-container').css("background-color", "#8495a5");
+          $.get(`/locations/${location.id}.json`, function(data) {
+            $('#overlay').empty();
+            data.reviews.forEach(function(review) {
+              html = `<div class="review-preview row"><p class="review-content">"${review.content}"</p><p>Stability rating: ${review.stability}</p><p>Reviewed: ${review.date_visited}</p></div>`;
+              $('#overlay-container').css("background-color", "#8495a5");
+              $('#overlay').append(html);
+            });
+          });
         });
 
         // add marker element to map
