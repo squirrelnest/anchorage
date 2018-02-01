@@ -3,11 +3,12 @@ Anchorage is a Rails app dedicated to helping sailors find and review anchorages
 
 # Installation
 
-1. Fork and clone this repo
-2. Navigate to directory where you saved the repo
-3. Migrate database with `rake db:migrate`
-4. Run `bundle install` to install dependencies
-5. Type `rails s` and hit enter to start server and run app locally
+1. Download and install PostGIS and Postgres
+2. Fork and clone this repo
+3. Navigate to directory where you saved the repo
+4. Migrate database with `rake db:migrate`
+5. Run `bundle install` to install dependencies
+6. Type `rails s` and hit enter to start server and run app locally
 
 # Contributing to Anchorage
 We're really excited that you're about to contribute to the Anchorage app. If this is your first time contributing, please continue reading to learn how to make the most meaningful and useful impact possible.

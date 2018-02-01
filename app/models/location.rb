@@ -20,14 +20,16 @@ class Location < ApplicationRecord
   end
 
   def lonlat_valid?
-    if @lat.to_f < -90 || @lat.to_f > 90 || @lon.to_f < -180 || @lon.to_f > 180
+    if lat.to_f < -90 || lat.to_f > 90 || lon.to_f < -180 || lon.to_f > 180
       errors.add(:lonlat, "latitude must be within -90 and 90, longitude must be within -180 and 180")
     end
   end
 
   def lat
     # returns instance value (ephemeral, in-memory value) if instance has already been created, else it returns the persisted value from the database
-    # if there's neither instance value or persisted lonlat value, then return nil
+    # if there's neither instance value or persisted lonlat value, then return nil.
+    # The code in parentheses is a nil guard: You can't call methods on nil. It's ok for lat to be nil. If you call lat, you get nil.
+    # But if lonlat is nil, and you call lonlat.lat, it will throw an exception (undefined method 'lat' on Nil:NilClass) instead of returning nil.
     @lat ? @lat : (lonlat ? lonlat.lat : nil)
   end
 
