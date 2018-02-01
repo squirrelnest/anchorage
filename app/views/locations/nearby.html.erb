@@ -1,10 +1,18 @@
-<div>
+<div class="col-md-12">
 
   <h2>Nearby anchorages (within 10km of your current location at <%= @current_lat.round(6) %>, <%= @current_lon.round(6) %> )</h2>
-  <% @locations.each do |location| %>
-    <h4>Nickname: <%= location.nickname %></h4>
-    <p>Latitude: <%= location.lonlat.lat %></p>
-    <p>Longitude: <%= location.lonlat.lon %></p>
-  <% end %>
+
+  <table class="table">
+    <th>Nickname</th>
+    <th>Latitude</th>
+    <th>Longitude</th>
+    <% @locations.each do |location| %>
+    <tr>
+      <td><%= link_to location.nickname, location %></td>
+      <td><%= location.lonlat.lat %></td>
+      <td><%= location.lonlat.lon %></td>
+    </tr>
+    <% end %>
+  </table>
 
 </div>

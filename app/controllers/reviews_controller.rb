@@ -29,7 +29,10 @@ class ReviewsController < ApplicationController
 
   def show
     @review = Review.find(params[:id])
-    render json: @review
+    respond_to do |format|
+      format.html { render :show }
+      format.json { render json: @review, status: 200 }
+    end
   end
 
   def edit

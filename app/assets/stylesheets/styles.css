@@ -1,12 +1,21 @@
 p {
   color: white;
 }
+.dark {
+  color: #212121;
+}
+
+body {
+  background: #e8eff9;
+}
 
 /* NAV */
 
 .navbar {
   margin: 0;
   height: 70px;
+  background: white;
+  border-bottom: 0.1px solid #212121;
 }
 
 .navbar-nav {

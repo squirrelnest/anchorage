@@ -1,8 +1,8 @@
-<div>
+<div class="col-md-12">
 
   <h4><%= @review.location.nickname %></h4>
   <em>Reviewed by <%= @review.user.username %></em> | <em>Anchor date: <%= @review.date_visited.strftime('%b %w, %Y') %></em>
-  <p>
+  <p class="dark">
   latitude: <%= @review.location.lonlat.lat %><br />
   longitude: <%= @review.location.lonlat.lon %><br />
   stability: <%= @review.stability %><br />
