@@ -42,7 +42,7 @@ class LocationsController < ApplicationController
         redirect_to location_path(@location)
       else
         flash[:message] = "Latitude must be between -90 and 90. Longitude must be between -180 and 180."
-        redirect_to location_path(@location)
+        redirect_to edit_location_path(@location)
       end
     else
       flash[:message] = "Only admins can edit location."
