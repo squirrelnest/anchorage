@@ -36,7 +36,6 @@ class ReviewsController < ApplicationController
   end
 
   def update
-    binding.pry
     @review = Review.find(params[:id])
     if @review.user_id == @user.id || current_user.admin
       @review.update(review_params)
@@ -62,7 +61,7 @@ class ReviewsController < ApplicationController
   private
 
   def review_params
-    params.require(:review).permit(:content, :stability, :date_visited, :location_id)
+    params.require(:review).permit(:content, :stability, :date_visited, :location_id, :safety, :amenities, :aesthetics)
   end
 
   def location_params

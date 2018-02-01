@@ -48,13 +48,11 @@ class Location < ApplicationRecord
   end
 
   # Instance level method #nearby
-
   def nearby(distance)
     self.class.nearby(self.lat, self.lon, distance)
   end
 
   # Class level method #nearby
-
   def self.nearby(lat, lon, distance)
     Location.where("ST_DWithin(locations.lonlat, ST_GeographyFromText('SRID=4326;POINT(:lon :lat)'), :distance)", lon: lon, lat: lat, distance: distance)
   end
