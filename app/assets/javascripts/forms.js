@@ -7,7 +7,6 @@ function createReview(event) {
 
   // slide out form
   $('#review-form').css("left", "50%");
-
 }
 
 function closeForm() {

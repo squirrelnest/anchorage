@@ -54,6 +54,7 @@ $(document).on('turbolinks:load', function() {
         var el = document.createElement('div');
         el.className = 'marker';
 
+        // show info overlay when marker gets clicked
         el.addEventListener('click', function(event) {
           event.preventDefault();
           event.stopPropagation();
@@ -61,7 +62,7 @@ $(document).on('turbolinks:load', function() {
           if (typeof popup !== "undefined") {
             popup.remove();
           }
-          // window.location.href = '/locations/' + location.id;
+          // window.location.href = '/locations/' + location.id; <--- assigning a URL to window.location.href causes the browser to navigate to that URL
           $('#overlay-container').css("background-color", "#8495a5");
           $.get(`/locations/${location.id}.json`, function(data) {
             $('#overlay').empty();
