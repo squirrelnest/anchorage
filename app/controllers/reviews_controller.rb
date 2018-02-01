@@ -36,6 +36,7 @@ class ReviewsController < ApplicationController
   end
 
   def update
+    binding.pry
     @review = Review.find(params[:id])
     if @review.user_id == @user.id || current_user.admin
       @review.update(review_params)

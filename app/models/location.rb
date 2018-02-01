@@ -10,7 +10,7 @@ class Location < ApplicationRecord
   validates :lonlat, uniqueness: true
   validates :lonlat, presence: true
 
-  validate :lonlat_valid?, on: :create
+  validate :lonlat_valid?, on: [:create, :update]
 
   def reviews_attributes=(reviews_attribute_sets=[])
     reviews_attribute_sets.each do |attribute_set|

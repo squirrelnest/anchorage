@@ -5,6 +5,7 @@
 function getPosition() {
 
   event.preventDefault();
+  event.stopPropagation();
   navigator.geolocation.getCurrentPosition(showPosition);
 
   function showPosition(position) {

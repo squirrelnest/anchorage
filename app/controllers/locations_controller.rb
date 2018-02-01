@@ -38,11 +38,14 @@ class LocationsController < ApplicationController
   def update
     if current_user.admin
       @location = Location.find(params[:id])
-      @location.update(location_params)
-      @location.save
-      redirect_to location_path(@location)
+      if @location.update(location_params)
+        redirect_to location_path(@location)
+      else
+        flash[:message] = "Latitude must be between -90 and 90. Longitude must be between -180 and 180."
+        redirect_to location_path(@location)
+      end
     else
-      flash[:message] = "Only admins can do that."
+      flash[:message] = "Only admins can edit location."
       redirect_to location_path(@location)
     end
   end
