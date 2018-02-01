@@ -16,7 +16,7 @@ function closeForm() {
 
 $(document).ready(function() {
   $(function () {
-    $('form').submit(function(event) {
+    $('form').submit(function(event) { // might break other forms, change to #review-form
       event.preventDefault();
       closeForm();
       var values = $(this).serialize();
