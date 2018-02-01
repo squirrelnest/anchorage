@@ -28,6 +28,7 @@ $(document).ready(function() {
         html = `<span><h3>Latest Review:</h3>${anchorage["nickname"]}, ${anchorage["country"]} | "${anchorage["reviews"][0]["content"]}"
                 </span>`;
         $("#latest").append(html);
+      // TODO: Refresh countries-list with new review
       });
     });
   });
