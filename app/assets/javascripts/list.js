@@ -10,7 +10,7 @@ function showLocations(event) {
     data.locations.forEach(function(location) {
       // location = new Location(locationData);
       // html = location.toHtml();
-      html = `<div id='review' data-id='${location.id}' onmouseover='showReviews(event)' onmouseout='hideReviews(event)'><p><strong><a href='/locations/${location.id}' data-id='${location.id}'>${location.nickname}</a></strong><br /> ${location.lat}, ${location.lon} </p></div>`;
+      html = `<div id='review' data-id='${location.id}' onmouseover='showReviews(event)'><p><strong><a href='/locations/${location.id}' data-id='${location.id}'>${location.nickname}</a></strong><br /> ${location.lat}, ${location.lon} </p></div>`;
       $(`[id='country-list-${country}']`).append(html);
     });
   });
@@ -20,6 +20,7 @@ function showReviews(event) {
   let location_id = event.target.attributes['data-id'].nodeValue;
   $('#overlay-container').css("background-color", "#8495a5");
   $.get(`/locations/${location_id}.json`, function(data) {
+    $('#overlay').empty();
     // add DOM element for nickname to overlay div
     let heading = `<h2>${data.nickname.toUpperCase()}</h2>`
     $('#overlay').append(heading);
@@ -32,7 +33,14 @@ function showReviews(event) {
       </div>`;
       $('#overlay').append(html);
     });
-    let buttons = `<button onClick="createReview(event)">Add Review</button>`
+    let buttons = `<button onClick="addReview(event)"
+    data-nickname="${data.nickname}"
+    data-country="${data.country}"
+    data-lat="${data.lat}"
+    data-lon="${data.lon}"
+    data-id="${data.id}">
+    Add Review
+    </button>`
     $('#overlay').append(buttons);
   });
 }
