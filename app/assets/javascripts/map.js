@@ -64,30 +64,10 @@ $(document).on('turbolinks:load', function() {
           }
           // window.location.href = '/locations/' + location.id; <--- assigning a URL to window.location.href causes the browser to navigate to that URL
           $('#overlay-container').css("background-color", "#8495a5");
-          $.get(`/locations/${location.id}.json`, function(data) {
-            $('#overlay').empty();
-            // add DOM element for nickname to overlay div
-            let heading = `<h2>${data.nickname.toUpperCase()}</h2><div class="add-review"></div>`
-            $('#overlay').append(heading);
-            // add DOM element for each review to overlay div
-            data.reviews.forEach(function(review) {
-              html = `<div class="review-preview">
-              <p class="review-content">"${review.content}"</p>
-              <p>Stability rating: ${review.stability}</p>
-              <p>Reviewed: ${review.date_visited}</p>
-              </div>`;
-              $('#overlay').append(html);
-            });
-            let buttons = `<button onClick="addReview(event)"
-            data-nickname="${data.nickname}"
-            data-country="${data.country}"
-            data-lat="${data.lat}"
-            data-lon="${data.lon}"
-            data-id="${data.id}">
-            Add Review
-            </button>`
-            $('#overlay').append(buttons);
-          });
+
+          // get json, instantiate Review objects and append them to DOM
+          reviewsOverlay(location.id);
+
         });
 
         // add marker element to map

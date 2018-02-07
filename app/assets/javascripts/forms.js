@@ -44,10 +44,6 @@ function addReview(event) {
     $('#addreview_country').val(event.target.attributes['data-country'].nodeValue);
   }
 
-  // Attach data attribute to Submit button
-  // $('input[type="submit"]').attr('data-id', `${location_id}`);
-  // $('#new_location').attr('action', `/locations/${location_id}/reviews`)
-
   // always pass csrf tokens on ajax calls
   $(function(){
     $.ajaxSetup({
@@ -74,11 +70,11 @@ $(document).ready(function() {
       closeForm();
       var values = $(this).serialize();
 
-      // post to Locations#new if no location_id (data-id)
+      // post to Locations#new
       var posting = $.post('/locations', values);
       posting.done(function(data) {
-        // handle response and append to DOM
 
+        // handle response and append to DOM
         $("#latest").empty;
         var anchorage = data;
         html = `<h3>Latest Review: ${anchorage["nickname"]}, ${anchorage["country"]} | "${anchorage["reviews"][0]["content"]}"</h3>`;
@@ -88,27 +84,7 @@ $(document).ready(function() {
 
       // reset form
       $('form').trigger('reset');
-      // document.getElementById('form').reset();
 
-      // } else {
-      //
-      // // post to Locations#update if location_id (data-id)
-      // console.log(event.target.attributes['data-id'].nodeValue);
-      //   var posting = $.post(`/locations/${event.target.attributes['data-id'].nodeValue}/reviews`, values);
-      //   posting.done(function(data) {
-      //     // handle response and append to DOM
-      //     $("#latest").empty;
-      //     var anchorage = data;
-      //       html = `<h3>Latest Review:${anchorage["nickname"]}, ${anchorage["country"]} | "${anchorage["reviews"][0]["content"]}"</h3>`;
-      //       $("#latest").append(html);
-      //     // TODO: Refresh countries-list with new review
-      //     });
-      //   }
-    // });
     });
   });
 });
-
-// $(document).on('page:receive', function() {
-//   $('[data-disable-with]:not([data-remote])').trigger('ajax:complete');
-// });
