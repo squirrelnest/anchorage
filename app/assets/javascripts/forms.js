@@ -60,7 +60,7 @@ function addReview(event) {
 // Close form
 function closeForm() {
   event.preventDefault();
-  $('#review-form').css("left", "100%");
+  $('#create-review-form').css("left", "100%");
 }
 
 // Submit form
@@ -69,6 +69,8 @@ $(document).ready(function() {
   $(function () {
     $('form').submit(function(event) { // might break other forms, change to #review-form
 
+      event.preventDefault();
+      event.stopPropagation();
       closeForm();
       var values = $(this).serialize();
 
@@ -76,7 +78,7 @@ $(document).ready(function() {
       var posting = $.post('/locations', values);
       posting.done(function(data) {
         // handle response and append to DOM
-        event.preventDefault();
+
         $("#latest").empty;
         var anchorage = data;
         html = `<h3>Latest Review: ${anchorage["nickname"]}, ${anchorage["country"]} | "${anchorage["reviews"][0]["content"]}"</h3>`;
@@ -86,7 +88,7 @@ $(document).ready(function() {
 
       // reset form
       $('form').trigger('reset');
-      document.getElementById('form').reset();
+      // document.getElementById('form').reset();
 
       // } else {
       //
