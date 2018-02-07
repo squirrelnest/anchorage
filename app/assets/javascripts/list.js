@@ -22,7 +22,7 @@ function showReviews(event) {
   $.get(`/locations/${location_id}.json`, function(data) {
     $('#overlay').empty();
     // add DOM element for nickname to overlay div
-    let heading = `<h2>${data.nickname.toUpperCase()}</h2>`
+    let heading = `<h2>${data.nickname.toUpperCase()}</h2><div class="add-review"></div>`
     $('#overlay').append(heading);
     // add DOM element for each review to overlay div
     data.reviews.forEach(function(review) {
@@ -41,7 +41,7 @@ function showReviews(event) {
     data-id="${data.id}">
     Add Review
     </button>`
-    $('#overlay').append(buttons);
+    $('.add-review').append(buttons);
   });
 }
 

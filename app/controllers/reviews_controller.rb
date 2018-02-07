@@ -15,15 +15,15 @@ class ReviewsController < ApplicationController
 
   def create
     @review = Review.new(review_params)
-    @location = Location.find_by(id: params[:location_id]) || Location.create(location_params)
-    if @location.valid?
-      @review.location = @location
-      @review.user = current_user
+    @location = Location.find_by(id: review_params["location_id"]) || Location.create(location_params)
+    @review.location = @location
+    @review.user_id = current_user.id
+    if @review.valid?
       @review.save
-      redirect_to location_path(@review.location)
+      redirect_to locations_path
     else
-      flash[:message] = @location.errors.messages.values.flatten.join("/n") if @location.errors.any?
-      redirect_to new_review_path
+      flash[:message] = @location.errors.messages.values.flatten.join(" ") if @location.errors.any?
+      redirect_to locations_path
     end
   end
 
@@ -69,7 +69,7 @@ class ReviewsController < ApplicationController
   end
 
   def location_params
-    params.permit(:nickname, :lon, :lat, :country)
+    params.permit(:nickname, :lon, :lat, :country, reviews_attributes: [:date_visited, :stability, :content])
   end
 
 end

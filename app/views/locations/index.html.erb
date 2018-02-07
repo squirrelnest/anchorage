@@ -20,19 +20,24 @@
 <!-- Overlay-->
 
   <div class="col-lg-3" id='overlay-container'>
-    <div class="col-lg-12 row" id='overlay'></div>
+    <div class="col-lg-12 row" id='overlay'>
+    </div>
   </div>
 
 <!-- Form -->
 
-  <div class="sliding-form" id="review-form">
-    <%= form_for(Location.new) do |f| %>
-      <%= render '/locations/locator', f: f %>
-      <%= f.submit 'Submit' %>
-    <% end %>
-    <br />
-    <button onClick="closeForm()">Cancel</button>
+  <div class="sliding-form" id="create-review-form">
+
+      <%= form_for(@location, url: '/locations', method: 'post') do |f| %>
+        <%= render 'locator', f: f %>
+        <%= f.submit 'Submit' %>
+        <br />
+        <button onClick="closeForm()">Cancel</button>
+      <% end %>
+
   </div>
+
+
 
 <!-- Latest news and updates -->
 

@@ -1,8 +1,28 @@
-<%= f.label "Date Visited:" %>
-<%= f.datetime_field :date_visited, value: Time.now.strftime("%Y-%m-%dT%H:%M") %><br>
+<% if !!@review %>
+  <%= f.label "Date Visited:" %>
 
-<%= f.label "Stability (10 is maximum stability):" %>
-<%= f.range_field :stability, in: 0..10, step: '1', value: @review.stability, placeholder: @review.stability %><br>
+  <%= f.datetime_field :date_visited, value: Time.now.strftime("%Y-%m-%dT%H:%M") %><br>
 
-<%= f.label "Content:" %>
-<%= f.text_area :content, value: @review.content, placeholder: @review.content %><br>
+  <%= f.label "Stability (10 is maximum stability):" %>
+  <%= f.range_field :stability, in: 0..10, step: '1', value: @review.stability, placeholder: @review.stability %><br>
+
+  <%= f.label "Content:" %>
+  <%= f.text_area :content, value: @review.content, placeholder: @review.content %><br>
+
+  <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+
+<% else %>
+
+  <%= f.label "Date Visited:" %>
+  <%= f.datetime_field :date_visited, value: Time.now.strftime("%Y-%m-%dT%H:%M") %><br>
+
+  <%= f.label "Stability (10 is maximum stability):" %>
+  <%= f.range_field :stability, in: 0..10, step: '1' %><br>
+
+  <%= f.label "Content:" %>
+  <%= f.text_area :content %><br>
+
+  <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+  <%= hidden_field_tag :location_id, value: nil %>
+
+<% end %>

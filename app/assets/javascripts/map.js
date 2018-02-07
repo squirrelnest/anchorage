@@ -67,7 +67,7 @@ $(document).on('turbolinks:load', function() {
           $.get(`/locations/${location.id}.json`, function(data) {
             $('#overlay').empty();
             // add DOM element for nickname to overlay div
-            let heading = `<h2>${data.nickname.toUpperCase()}</h2>`
+            let heading = `<h2>${data.nickname.toUpperCase()}</h2><div class="add-review"></div>`
             $('#overlay').append(heading);
             // add DOM element for each review to overlay div
             data.reviews.forEach(function(review) {

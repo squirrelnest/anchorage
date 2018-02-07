@@ -25,6 +25,7 @@ class LocationsController < ApplicationController
   end
 
   def index
+    @location = Location.find(3)
     @locations = Location.all
     respond_to do |format|
       format.html { render :index }
@@ -33,10 +34,10 @@ class LocationsController < ApplicationController
   end
 
   def new
-    @location = Location.new(lon: params[:lon], lat: params[:lat])
+    @location = Location.find_by(id: params[:location_id])
     @review = Review.new
     respond_to do |format|
-      format.html { render :index }
+      format.html { render :new }
       format.json { render json: @location, status: 200 }
     end
   end
