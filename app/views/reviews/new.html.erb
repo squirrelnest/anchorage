@@ -1,6 +1,8 @@
-<h3>Create New Review</h3>
+<div class="col-md-12">
+  <h3>Create New Review</h3>
 
-<%= form_for([@location, @review]) do |f| %>
-  <%= render 'form', f: f %>
-  <%= f.submit %>
-<% end %>
+  <%= form_for([@location, @review]) do |f| %>
+    <%= render 'form', f: f %>
+    <%= f.submit %>
+  <% end %>
+</div>

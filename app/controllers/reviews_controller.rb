@@ -15,7 +15,7 @@ class ReviewsController < ApplicationController
 
   def create
     @review = Review.new(review_params)
-    @location = Location.find_by(id: review_params["location_id"]) || Location.create(location_params)
+    @location = Location.find_by(id: review_params["location_id"]) || Location.find_by(id: params[:location_id]) || Location.create(location_params)
     @review.location = @location
     @review.user_id = current_user.id
     if @review.valid?

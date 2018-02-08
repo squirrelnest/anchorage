@@ -1,17 +1,12 @@
-// Create new location and review
-function createReview(event) {
-  event.preventDefault();
-
-  // prefill form fields
-  if (event.target.attributes['data-lat'] !== undefined) {
-    $('#nickname').val('');
-    $('#lat').val(event.target.attributes['data-lat'].nodeValue);
-    $('#lon').val(event.target.attributes['data-lon'].nodeValue);
-    $('#country').val('');
+// Show or hide review form for existing anchorage
+function toggleReviewForm(event) {
+  if ( $('button#toggle-form').text() === 'Add Review') {
+    $('button#toggle-form').text('Cancel');
+    addReview(event);
+  } else {
+    $('button#toggle-form').text('Add Review');
+    $("form#addreview").remove();
   }
-
-  // slide out form
-  $('#create-review-form').css("left", "50%");
 }
 
 // Add review to existing anchorage
@@ -23,14 +18,20 @@ function addReview(event) {
   var AUTH_TOKEN = $('meta[name=csrf-token]').attr('content');
 
   // create form
-  html = `<p><form id="addreview" action="/reviews" method="post">
+  html = `<form id="addreview" action="/reviews" method="post"><hr>
           <input name="authenticity_token" type="hidden" value="${AUTH_TOKEN}" />
           <input type='hidden' name='review[location_id]' id='addreview_location_id' value='${location_id}'>
-          <p>Date Visited: <br /><input type='text' name='review[date_visited]' id='addreview_date_visited' value='${timestamp}'></p>
-          <p>Stability: <br /><input type='range' name='review[stability]' id='addreview_stability' value='' min="0" max="10" step="1"></p>
-          <p>Content: <br /><input type='text' name='review[content]' id='addreview_content' value=''></p>
+          <div class="form-group">
+          <p><strong>Date Visited</strong> <br /><input type='text' class="form-control" name='review[date_visited]' id='addreview_date_visited' value='${timestamp}'></p>
+          </div>
+          <div class="form-group">
+          <p><strong>Stability</strong> <br /><input type='range' name='review[stability]' id='addreview_stability' value='' min="0" max="10" step="1"></p>
+          </div>
+          <div class="form-group">
+          <p><strong>Content</strong> <br /><input type='text' class="form-control" name='review[content]' id='addreview_content' value=''></p>
+          </div>
           <input type="submit">
-          </form></p>`
+          <hr></form>`
 
   // append form fields to DOM
   $(".add-review").append(html);
@@ -53,27 +54,45 @@ function addReview(event) {
 
 }
 
-// Close form
+// Create new location and review
+function createReview(event) {
+  event.preventDefault();
+
+  // prefill form fields
+  if (event.target.attributes['data-lat'] !== undefined) {
+    $('#nickname').val('');
+    $('#lat').val(event.target.attributes['data-lat'].nodeValue);
+    $('#lon').val(event.target.attributes['data-lon'].nodeValue);
+    $('#country').val('');
+  }
+
+  // slide out form
+  $('#create-review-form').css("left", "50%");
+}
+
+// Close form for new anchorage
 function closeForm() {
   event.preventDefault();
   $('#create-review-form').css("left", "100%");
 }
 
-// Submit form
+// Submit form for new anchorage
 $(document).ready(function() {
 
   $(function () {
-    $('form').submit(function(event) { // might break other forms, change to #review-form
+    $('#new_location').submit(function(event) {
 
       event.preventDefault();
       event.stopPropagation();
+
       closeForm();
+
       var values = $(this).serialize();
 
       // post to Locations#new
       var posting = $.post('/locations', values);
       posting.done(function(data) {
-
+        console.log("js intercepted!")
         // handle response and append to DOM
         $("#latest").empty;
         var anchorage = data;

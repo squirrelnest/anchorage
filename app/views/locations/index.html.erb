@@ -28,16 +28,15 @@
 
   <div class="sliding-form" id="create-review-form">
 
-      <%= form_for(@location, url: '/locations', method: 'post') do |f| %>
+      <%= form_for(Location.new, url: '/locations', method: 'post') do |f| %>
         <%= render 'locator', f: f %>
+        <%= render '/reviews/nestedreview', f: f %>
         <%= f.submit 'Submit' %>
         <br />
         <button onClick="closeForm()">Cancel</button>
       <% end %>
 
   </div>
-
-
 
 <!-- Latest news and updates -->
 

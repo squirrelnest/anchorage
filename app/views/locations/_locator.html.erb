@@ -1,4 +1,6 @@
-<%= hidden_field_tag :location_id, value: nil %>
+<% if @location %>
+  <%= hidden_field_tag :location_id, value: @location.id %>
+<% end %>
 <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
 
 <p>
@@ -18,19 +20,3 @@
   <%= f.text_field :country, {id: "country"} %>
   <button onClick="getPosition()">Autofill Location</button>
 </p>
-
-<%= f.fields_for :reviews_attributes do |ff| %>
-  <p>
-    <%= ff.label "Date Visited:" %>
-    <%= ff.datetime_field :date_visited, name: 'location[reviews_attributes][][date_visited]', value: Time.now.strftime("%Y-%m-%dT%H:%M") %>
-  </p>
-  <p>
-    <%= ff.label "Stability (10 is maximum stability):" %>
-    <%= ff.range_field :stability, name: 'location[reviews_attributes][][stability]', in: 0..10, step: '1' %>
-  </p>
-  <p>
-    <%= ff.label "Content:" %><br />
-    <%= ff.text_area :content, name: 'location[reviews_attributes][][content]' %>
-  </p>
-
-<% end %>

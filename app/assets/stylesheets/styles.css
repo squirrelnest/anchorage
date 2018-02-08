@@ -110,7 +110,7 @@ form p {
 }
 
 input[type=range] {
-  width: 25%;
+  width: 100%;
 }
 
 .sliding-form {
@@ -127,33 +127,37 @@ input[type=range] {
 
 /* REVIEWS */
 
-#review, .list h3 {
+.review, .list h3 {
   padding-left: 15px;
   padding-right: 15px;
 }
 
-#review, .list h3 :hover {
+.review, .list h3 :hover {
   color: white;
   text-decoration: none;
 }
 
-#review, .list h3 :focus {
+.review, .list h3 :focus {
   color: white;
   text-decoration: none;
 }
 
-#review:hover {
+.review:hover {
   background-color: #8495a5;
 }
 
-#review a:hover {
+.review a:hover {
   color: white;
   text-decoration: none;
+}
+
+.add-review {
+  padding: 0 15px 0 0;
 }
 
 .review-preview {
   background-color: #8495a5;
-  padding: 0px;
+  padding: 20px 0 0 0;
 }
 
 .review-content {
@@ -161,12 +165,13 @@ input[type=range] {
 }
 
 #overlay {
-  margin: 20px;
+  margin: 0px;
   align-self: center;
 }
 
 #overlay-container {
-  padding: 0px;
+  margin: 0px;
   background-color: #212121;
   height: 600px;
+  overflow: auto;
 }

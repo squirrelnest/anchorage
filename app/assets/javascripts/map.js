@@ -42,7 +42,7 @@ $(document).on('turbolinks:load', function() {
       // TODO: when user clicks X button to close popup, form should slide away if it was opened
     });
 
-    // Define points to mark with markers
+    // Define points to mark
     const url = '/locations/geojson';
     foo = $.get(url);
 
@@ -61,13 +61,13 @@ $(document).on('turbolinks:load', function() {
           // clear popups if they exist
           if (typeof popup !== "undefined") {
             popup.remove();
+            $('.review').each(function() { this.remove() });
           }
-          // window.location.href = '/locations/' + location.id; <--- assigning a URL to window.location.href causes the browser to navigate to that URL
-          $('#overlay-container').css("background-color", "#8495a5");
 
           // get json, instantiate Review objects and append them to DOM
           reviewsOverlay(location.id);
 
+          // window.location.href = '/locations/' + location.id; <--- assigning a URL to window.location.href causes the browser to navigate to that URL
         });
 
         // add marker element to map

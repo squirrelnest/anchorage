@@ -8,7 +8,7 @@ class Location {
   }
 
   toHTML() {
-    return `<div id='review' data-id='${this.id}' onmouseover='showReviews(event)'>
+    return `<div class='review' data-id='${this.id}' onmouseover='showReviews(event)'>
     <p><strong><a href='/locations/${this.id}' data-id='${this.id}'>${this.nickname}</a></strong>
     <br /> ${this.lat}, ${this.lon} </p></div>`;
   }
@@ -23,7 +23,7 @@ class Review {
   }
 
   toHTML() {
-    return `<div class="review-preview">
+    return `<div class="review-preview row">
     <p class="review-content">"${this.content}"</p>
     <p>Stability rating: ${this.stability}</p>
     <p>Reviewed: ${this.date_visited}</p>
@@ -32,18 +32,19 @@ class Review {
 }
 
 function buttons(data) {
-  return `<button id="toggle-review-form"
-  onclick="addReview(event)"
+  return `<button id="toggle-form"
+  onclick="toggleReviewForm(event)"
   data-nickname="${data.nickname}"
   data-country="${data.country}"
   data-lat="${data.lat}"
   data-lon="${data.lon}"
-  data-id="${data.id}">
-  Add Review
-  </button>`
+  data-id="${data.id}">Add Review</button>`
 }
 
 function reviewsOverlay(location_id) {
+
+  // change overlay style
+  $('#overlay-container').css("background-color", "#8495a5");
 
   // get location json
   $.get(`/locations/${location_id}.json`, function(data) {
@@ -52,7 +53,10 @@ function reviewsOverlay(location_id) {
     $('#overlay').empty();
 
     // add DOM element for nickname and addReview to overlay div
-    let heading = `<h2>${data.nickname.toUpperCase()}</h2><div class="add-review">` + buttons(data) + `</div>`
+    let heading = `<a href="/locations/${location_id}.html">
+    <h3 class="row">${data.nickname}</h3></a>
+    <div class="add-review row">` + buttons(data) + `</div>`
+
     $('#overlay').append(heading);
 
     // add DOM element for each review to overlay div
@@ -60,5 +64,6 @@ function reviewsOverlay(location_id) {
       var review = new Review(review)
       $('#overlay').append(review.toHTML());
     });
+
   });
 }
