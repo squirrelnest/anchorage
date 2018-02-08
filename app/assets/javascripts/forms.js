@@ -93,7 +93,7 @@ $(document).ready(function() {
       posting.done(function(data) {
         console.log("js intercepted!")
         // handle response and append to DOM
-        $("#latest").empty;
+        $("#latest").empty();
         var anchorage = data;
         html = `<h3>Latest Review: ${anchorage["nickname"]}, ${anchorage["country"]} | "${anchorage["reviews"][0]["content"]}"</h3>`;
         $("#latest").append(html);
