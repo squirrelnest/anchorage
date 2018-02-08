@@ -1,19 +1,19 @@
 // Show or hide review form for existing anchorage
 function toggleReviewForm(event) {
+  event.preventDefault();
   if ( $('button#toggle-form').text() === 'Add Review') {
     $('button#toggle-form').text('Cancel');
-    addReview(event);
+    let location_id = event.target.attributes['data-id'].nodeValue;
+    addReview(location_id);
   } else {
     $('button#toggle-form').text('Add Review');
     $("form#addreview").remove();
   }
 }
 
-// Add review to existing anchorage
-function addReview(event) {
-  event.preventDefault();
+// Add review form to existing anchorage
+function addReview(location_id) {
 
-  let location_id = event.target.attributes['data-id'].nodeValue;
   let timestamp = (new Date()).toUTCString();
   var AUTH_TOKEN = $('meta[name=csrf-token]').attr('content');
 

@@ -61,8 +61,9 @@ $(document).on('turbolinks:load', function() {
           // clear popups if they exist
           if (typeof popup !== "undefined") {
             popup.remove();
-            $('.review').each(function() { this.remove() });
           }
+          // close list
+          $('.review').each(function() { this.remove() });
 
           // get json, instantiate Review objects and append them to DOM
           reviewsOverlay(location.id);
