@@ -8,8 +8,8 @@ $(document).on('turbolinks:load', function() {
     var map = new mapboxgl.Map({
         container: 'map', // container id
         style: 'mapbox://styles/mapbox/satellite-v9', // stylesheet location
-        center: [-65.017, -16.457], // starting position [lng, lat]
-        zoom: 1 // starting zoom
+        center: [14, 47], // starting position [lng, lat]
+        zoom: .5 // starting zoom
     });
 
     // Add geolocate control to the map
