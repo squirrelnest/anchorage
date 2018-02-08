@@ -8,7 +8,7 @@ class Location {
   }
 
   toHTML() {
-    return `<div class='review' data-id='${this.id}' onmouseover='showReviews(event)'>
+    return `<div class='review' data-id='${this.id}' onmouseover='showReviews(event, ${this.id})'>
     <p><strong><a href='/locations/${this.id}' data-id='${this.id}'>${this.nickname}</a></strong>
     <br /> ${this.lat}, ${this.lon} </p></div>`;
   }
@@ -33,12 +33,7 @@ class Review {
 
 function buttons(data) {
   return `<button id="toggle-form"
-  onclick="toggleReviewForm(event)"
-  data-nickname="${data.nickname}"
-  data-country="${data.country}"
-  data-lat="${data.lat}"
-  data-lon="${data.lon}"
-  data-id="${data.id}">Add Review</button>`
+  onclick='toggleReviewForm(event, ${JSON.stringify(data)})'>Add Review</button>`
 }
 
 function reviewsOverlay(location_id) {

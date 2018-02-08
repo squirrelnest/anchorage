@@ -1,10 +1,9 @@
 // Show or hide review form for existing anchorage
-function toggleReviewForm(event) {
+function toggleReviewForm(event, data) {
   event.preventDefault();
   if ( $('button#toggle-form').text() === 'Add Review') {
     $('button#toggle-form').text('Cancel');
-    let location_id = event.target.attributes['data-id'].nodeValue;
-    addReview(location_id);
+    addReview(data);
   } else {
     $('button#toggle-form').text('Add Review');
     $("form#addreview").remove();
@@ -12,7 +11,7 @@ function toggleReviewForm(event) {
 }
 
 // Add review form to existing anchorage
-function addReview(location_id) {
+function addReview(data) {
 
   let timestamp = (new Date()).toUTCString();
   var AUTH_TOKEN = $('meta[name=csrf-token]').attr('content');
@@ -20,7 +19,7 @@ function addReview(location_id) {
   // create form
   html = `<form id="addreview" action="/reviews" method="post"><hr>
           <input name="authenticity_token" type="hidden" value="${AUTH_TOKEN}" />
-          <input type='hidden' name='review[location_id]' id='addreview_location_id' value='${location_id}'>
+          <input type='hidden' name='review[location_id]' id='addreview_location_id' value='${data.id}'>
           <div class="form-group">
           <p><strong>Date Visited</strong> <br /><input type='text' class="form-control" name='review[date_visited]' id='addreview_date_visited' value='${timestamp}'></p>
           </div>
@@ -38,11 +37,11 @@ function addReview(location_id) {
 
   // prefill form fields
   if (event.target.attributes['data-lat'] !== undefined) {
-    $('#addreview_location_id').val(`${location_id}`);
-    $('#addreview_lat').val(event.target.attributes['data-lat'].nodeValue);
-    $('#addreview_lon').val(event.target.attributes['data-lon'].nodeValue);
-    $('#addreview_nickname').val(event.target.attributes['data-nickname'].nodeValue);
-    $('#addreview_country').val(event.target.attributes['data-country'].nodeValue);
+    $('#addreview_location_id').val(string(data.id));
+    $('#addreview_lat').val(data.lat);
+    $('#addreview_lon').val(data.lon);
+    $('#addreview_nickname').val(data.nickname);
+    $('#addreview_country').val(data.country);
   }
 
   // always pass csrf tokens on ajax calls

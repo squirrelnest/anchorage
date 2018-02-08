@@ -18,8 +18,8 @@ function showLocations(event) {
   });
 };
 
-function showReviews(event) {
-  let location_id = event.target.attributes['data-id'].nodeValue;
+function showReviews(event, location_id) {
+  // let location_id = event.target.attributes['data-id'].nodeValue;
   // get json, instantiate Review objects and append them to DOM
   reviewsOverlay(location_id);
 }
