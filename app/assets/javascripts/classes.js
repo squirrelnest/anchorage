@@ -33,7 +33,7 @@ class Review {
 
 function buttons(data) {
   return `<button id="toggle-form"
-  onclick='toggleReviewForm(event, ${JSON.stringify(data)})'>Add Review</button>`
+  onclick="toggleReviewForm(event, ${JSON.parse(JSON.stringify(data)).id})">Add Review</button>`
 }
 
 function reviewsOverlay(location_id) {
@@ -54,8 +54,18 @@ function reviewsOverlay(location_id) {
 
     $('#overlay').append(heading);
 
+    function compareStability(current, next) {
+      if (current.stability > next.stability) {
+        return 1;
+      } else if (current.stability < next.stability) {
+        return -1;
+      } else {
+        return 0;
+      }
+    }
+
     // add DOM element for each review to overlay div
-    data.reviews.forEach(function(review) {
+    data.reviews.sort(compareStability).forEach(function(review) {
       var review = new Review(review)
       $('#overlay').append(review.toHTML());
     });

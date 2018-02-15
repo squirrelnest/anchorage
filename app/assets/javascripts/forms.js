@@ -19,7 +19,7 @@ function addReview(data) {
   // create form
   html = `<form id="addreview" action="/reviews" method="post"><hr>
           <input name="authenticity_token" type="hidden" value="${AUTH_TOKEN}" />
-          <input type='hidden' name='review[location_id]' id='addreview_location_id' value='${data.id}'>
+          <input type='hidden' name='review[location_id]' id='addreview_location_id' value='${data}'>
           <div class="form-group">
           <p><strong>Date Visited</strong> <br /><input type='text' class="form-control" name='review[date_visited]' id='addreview_date_visited' value='${timestamp}'></p>
           </div>

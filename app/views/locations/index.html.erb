@@ -9,7 +9,7 @@
 
   <div class="col-lg-3 list-container">
     <div class="col-lg-12 list-heading row"><h3>All Locations</h3></div>
-    <div class="col-lg-12 list row">
+    <div class="col-lg-12 list row" id="countries-list">
       <% @locations.order(:country).group_by(&:country).each do |country, locations| %>
         <h3><a href="" onClick="showLocations(event)" data-country="<%= country %>"><%= country %></a></h3>
         <div class="country-list" id="country-list-<%= country %>"></div>
