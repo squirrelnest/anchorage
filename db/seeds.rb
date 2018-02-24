@@ -1,7 +1,81 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+Location.create!([
+  {nickname: "Linapacan West", lonlat: #<RGeo::Geographic::SphericalPointImpl:0x3feb70f049ac "POINT (119.741391 11.424789)">, country: "Philippines"},
+  {nickname: "Willikies", lonlat: #<RGeo::Geographic::SphericalPointImpl:0x3feb70efdbfc "POINT (-61.69097900390625 17.13554114256562)">, country: "Antigua and Barbuda"},
+  {nickname: "South Bay", lonlat: #<RGeo::Geographic::SphericalPointImpl:0x3feb70f45b3c "POINT (9.6798894 3.4914197)">, country: "Cameroon"},
+  {nickname: "Caiapônia", lonlat: #<RGeo::Geographic::SphericalPointImpl:0x3feb70f44584 "POINT (-52.0 -16.0)">, country: "Brazil"},
+  {nickname: "Colima", lonlat: #<RGeo::Geographic::SphericalPointImpl:0x3feb70f34e04 "POINT (-110.97511557326668 18.73302914372239)">, country: "Mexico"},
+  {nickname: "Middle of the Atlantic", lonlat: #<RGeo::Geographic::SphericalPointImpl:0x3feb70f2c308 "POINT (-63.08340625000797 36.18235862678165)">, country: "None"},
+  {nickname: "Fistula del Fuego", lonlat: #<RGeo::Geographic::SphericalPointImpl:0x3feb70f1dc54 "POINT (-64.57353149943354 -42.69747987460926)">, country: "Argentina"},
+  {nickname: "Jaws Wuz Here", lonlat: #<RGeo::Geographic::SphericalPointImpl:0x3feb70f1c0ac "POINT (22.7983429318283 -34.71553102254125)">, country: "South Africa"},
+  {nickname: "Hobbit Hole", lonlat: #<RGeo::Geographic::SphericalPointImpl:0x3feb70f64e4c "POINT (-78.89754268127841 8.285443329056008)">, country: "Panama"},
+  {nickname: "Hermit's Paradise", lonlat: #<RGeo::Geographic::SphericalPointImpl:0x3feb70f5db88 "POINT (146.15142498386166 -18.167955047290633)">, country: "Australia"},
+  {nickname: "Rabbit Island", lonlat: #<RGeo::Geographic::SphericalPointImpl:0x3feb70f5c60c "POINT (133.66484506172452 33.46726182563076)">, country: "Japan"},
+  {nickname: "Rainbowsky", lonlat: #<RGeo::Geographic::SphericalPointImpl:0x3feb70f4dd78 "POINT (145.51574155951357 43.71181764442056)">, country: "Russia"},
+  {nickname: "Desert Armpit", lonlat: #<RGeo::Geographic::SphericalPointImpl:0x3feb70f81e5c "POINT (-70.49445579577976 -25.402665918861103)">, country: "Chile"},
+  {nickname: "Pirate Haven", lonlat: #<RGeo::Geographic::SphericalPointImpl:0x3feb70f806d8 "POINT (53.90251754935932 24.27945360479626)">, country: "United Arab Emirates"},
+  {nickname: "Crimea", lonlat: #<RGeo::Geographic::SphericalPointImpl:0x3feb70f798c4 "POINT (29.443589489982998 45.88756288510595)">, country: "Ukraine"},
+  {nickname: "Ongo river mouth", lonlat: #<RGeo::Geographic::SphericalPointImpl:0x3feb70f787f8 "POINT (9.570584762937841 3.656483832744158)">, country: "Cameroon"},
+  {nickname: "Seychelles Anse Royale", lonlat: #<RGeo::Geographic::SphericalPointImpl:0x3feb70f6d830 "POINT (55.52593231201172 -4.751624041481169)">, country: "Seychelles"},
+  {nickname: "Oslo, Norway", lonlat: #<RGeo::Geographic::SphericalPointImpl:0x3feb70fa1658 "POINT (10.69742202758789 59.91321349626047)">, country: "Norway"},
+  {nickname: "Belem, Brazil", lonlat: #<RGeo::Geographic::SphericalPointImpl:0x3feb70fa04b0 "POINT (-48.14208984375 -0.21972602392080884)">, country: "Brazil"},
+  {nickname: "Ao Yon, East Side of Bay", lonlat: #<RGeo::Geographic::SphericalPointImpl:0x3feb70f98bc0 "POINT (98.39561462402344 7.7953573397915035)">, country: "Thailand"},
+  {nickname: "Casa Latina", lonlat: #<RGeo::Geographic::SphericalPointImpl:0x3feb70f90d58 "POINT (-122.292871 37.8714455)">, country: "United States"},
+  {nickname: "Paris, France", lonlat: #<RGeo::Geographic::SphericalPointImpl:0x3feb70f89954 "POINT (2.3522219000000177 48.85661400000001)">, country: "France"},
+  {nickname: "Wework Transbay", lonlat: #<RGeo::Geographic::SphericalPointImpl:0x3feb70fbd614 "POINT (-122.39834270000001 37.7889108)">, country: "United States"},
+  {nickname: "Boratopolis", lonlat: #<RGeo::Geographic::SphericalPointImpl:0x3feb70fbc6d8 "POINT (76.123456 45.123456)">, country: "Kazakhstan"},
+  {nickname: "Antarctica", lonlat: #<RGeo::Geographic::SphericalPointImpl:0x3feb70fb5cac "POINT (130.123456 -82.862752)">, country: "None"}
+])
+Review.create!([
+  {content: "Crowded moorings and expensive hotels", stability: 5, date_visited: "2018-01-20 01:35:00", location_id: 10, user_id: 1, safety: nil, aesthetics: nil, amenities: nil},
+  {content: "too boogie for me", stability: 5, date_visited: "2018-02-07 15:42:00", location_id: 59, user_id: 2, safety: nil, aesthetics: nil, amenities: nil},
+  {content: "River piranhas and angry natives", stability: 1, date_visited: "2018-01-20 02:02:00", location_id: 12, user_id: 1, safety: nil, aesthetics: nil, amenities: nil},
+  {content: "out there somewhere", stability: 5, date_visited: "2018-02-07 22:51:33", location_id: 58, user_id: 2, safety: nil, aesthetics: nil, amenities: nil},
+  {content: "I approve this tea", stability: 0, date_visited: "2018-01-29 18:53:00", location_id: 46, user_id: 2, safety: nil, aesthetics: nil, amenities: nil},
+  {content: "Long way up the river", stability: 5, date_visited: "2018-02-08 00:16:27", location_id: 51, user_id: 2, safety: nil, aesthetics: nil, amenities: nil},
+  {content: "Sharky", stability: 0, date_visited: "2018-02-08 00:33:24", location_id: 62, user_id: 2, safety: nil, aesthetics: nil, amenities: nil},
+  {content: "Cold ass metal seat", stability: 8, date_visited: "2018-01-20 18:06:00", location_id: 11, user_id: 3, safety: nil, aesthetics: nil, amenities: nil},
+  {content: "Hurricane hole", stability: 9, date_visited: "2018-01-20 18:29:00", location_id: 3, user_id: 3, safety: nil, aesthetics: nil, amenities: nil},
+  {content: "Hoity toity. Every mooring here seems to be privately owned.", stability: 2, date_visited: "2018-01-20 18:38:00", location_id: 4, user_id: 3, safety: nil, aesthetics: nil, amenities: nil},
+  {content: "Glassy water. Lively coral reef with tons of fish. Behind a pearl farm and protected from swells.", stability: 10, date_visited: "2018-01-20 18:40:00", location_id: 2, user_id: 3, safety: nil, aesthetics: nil, amenities: nil},
+  {content: "i want to live here", stability: 10, date_visited: "2018-01-20 18:41:00", location_id: 2, user_id: 2, safety: nil, aesthetics: nil, amenities: nil},
+  {content: "Naga the Giant Dragon summers here", stability: 0, date_visited: "2018-01-20 18:43:00", location_id: 12, user_id: 2, safety: nil, aesthetics: nil, amenities: nil},
+  {content: "Sweet bananas", stability: 5, date_visited: "2018-02-08 00:58:14", location_id: 3, user_id: 2, safety: nil, aesthetics: nil, amenities: nil},
+  {content: "Delicious enchiladas", stability: 2, date_visited: "2018-01-22 02:23:00", location_id: 18, user_id: 2, safety: nil, aesthetics: nil, amenities: nil},
+  {content: "Smells to high hell", stability: 7, date_visited: "2017-12-04 12:59:00", location_id: 52, user_id: 4, safety: nil, aesthetics: nil, amenities: nil},
+  {content: "Goodness gracious great balls of fire", stability: 1, date_visited: "2017-08-15 13:06:00", location_id: 11, user_id: 4, safety: nil, aesthetics: nil, amenities: nil},
+  {content: "holey high water", stability: 3, date_visited: "2017-03-07 13:10:00", location_id: 11, user_id: 4, safety: nil, aesthetics: nil, amenities: nil},
+  {content: "oi vey", stability: 6, date_visited: "2018-01-30 13:46:00", location_id: 51, user_id: 4, safety: nil, aesthetics: nil, amenities: nil},
+  {content: "Beware, strong currents", stability: 1, date_visited: "2018-01-30 13:46:00", location_id: 53, user_id: 4, safety: nil, aesthetics: nil, amenities: nil},
+  {content: "Mildly irritating", stability: 9, date_visited: "2018-01-21 21:54:00", location_id: 1, user_id: 2, safety: nil, aesthetics: nil, amenities: nil},
+  {content: "Penguin suits galore", stability: 9, date_visited: "2018-01-21 23:12:00", location_id: 24, user_id: 2, safety: nil, aesthetics: nil, amenities: nil},
+  {content: "Floats my boatie", stability: 10, date_visited: "2018-01-30 13:53:00", location_id: 2, user_id: 4, safety: nil, aesthetics: nil, amenities: nil},
+  {content: "My toes froze off", stability: 1, date_visited: "2018-01-21 23:25:00", location_id: 24, user_id: 2, safety: nil, aesthetics: nil, amenities: nil},
+  {content: "exciting", stability: 0, date_visited: "2018-01-21 23:32:00", location_id: 3, user_id: 2, safety: nil, aesthetics: nil, amenities: nil},
+  {content: "What's that smell?", stability: 5, date_visited: "2017-09-07 14:15:00", location_id: 4, user_id: 5, safety: nil, aesthetics: nil, amenities: nil},
+  {content: "yummy to my tummy", stability: 9, date_visited: "2018-01-30 14:57:00", location_id: 18, user_id: 2, safety: nil, aesthetics: nil, amenities: nil},
+  {content: "Rock a bye baby, rolling waves put me to sleep. Zzzzz.", stability: 5, date_visited: "2017-10-16 20:26:00", location_id: 25, user_id: 2, safety: nil, aesthetics: nil, amenities: nil},
+  {content: "Way too exposed to swell", stability: 1, date_visited: "2018-01-31 12:28:00", location_id: 57, user_id: 2, safety: nil, aesthetics: nil, amenities: nil},
+  {content: "Stuck in the doldrums", stability: 9, date_visited: "2018-01-31 15:16:00", location_id: 58, user_id: 2, safety: nil, aesthetics: nil, amenities: nil},
+  {content: "Safe harbor", stability: 5, date_visited: "2018-01-31 15:19:00", location_id: 59, user_id: 2, safety: nil, aesthetics: nil, amenities: nil},
+  {content: "Freezing my socks off", stability: 5, date_visited: "2018-02-01 08:48:00", location_id: 24, user_id: 2, safety: 9, aesthetics: 1, amenities: 0},
+  {content: "Meh. Too exposed. Couldn't drink my coffee without spilling it.", stability: 1, date_visited: "2018-01-31 15:27:00", location_id: 60, user_id: 2, safety: nil, aesthetics: nil, amenities: nil},
+  {content: "Great place to hang out while awaiting your turn through the Canal", stability: 9, date_visited: "2018-01-31 15:32:00", location_id: 61, user_id: 2, safety: nil, aesthetics: nil, amenities: nil},
+  {content: "Noone around for miles. Perfect for loners.", stability: 10, date_visited: "2018-01-31 15:34:00", location_id: 62, user_id: 2, safety: nil, aesthetics: nil, amenities: nil},
+  {content: "Nicest people I've ever met. And bunnies.", stability: 2, date_visited: "2018-01-31 15:39:00", location_id: 63, user_id: 2, safety: nil, aesthetics: nil, amenities: nil},
+  {content: "Well protected. Beautiful rainbows. Would come back here again.", stability: 10, date_visited: "2018-01-31 15:44:00", location_id: 64, user_id: 2, safety: nil, aesthetics: nil, amenities: nil},
+  {content: "No fresh water. Dry winds from desert.", stability: 8, date_visited: "2018-01-31 16:03:00", location_id: 68, user_id: 2, safety: nil, aesthetics: nil, amenities: nil},
+  {content: "Egad. There's no wifi or data reception here!", stability: 5, date_visited: "2018-01-31 22:05:00", location_id: 24, user_id: 2, safety: nil, aesthetics: nil, amenities: nil},
+  {content: "potatotoey", stability: 9, date_visited: "2018-02-01 13:10:00", location_id: 1, user_id: 3, safety: 8, aesthetics: 2, amenities: 3},
+  {content: "bongo mania", stability: 5, date_visited: "2018-02-01 16:02:00", location_id: 62, user_id: 2, safety: nil, aesthetics: nil, amenities: nil},
+  {content: "Great coconuts", stability: 1, date_visited: "2018-02-12 17:09:57", location_id: 12, user_id: 2, safety: nil, aesthetics: nil, amenities: nil},
+  {content: "Warzone. Stay away.", stability: 1, date_visited: "2018-02-12 11:10:00", location_id: 133, user_id: 2, safety: nil, aesthetics: nil, amenities: nil},
+  {content: "Water's really calm. Slept like a baby here.", stability: 9, date_visited: "2018-02-12 17:19:22", location_id: 57, user_id: 2, safety: nil, aesthetics: nil, amenities: nil}
+])
+User.create!([
+  {username: "abc", password_digest: "$2a$10$LxmGxDkyrNNn4QDAR/4oy.BJlkEz3tumwwEQ9/YYkrsdFtf4Siq2S", admin: false},
+  {username: "amy", password_digest: "$2a$10$YcesMlSQFj2fK8BxTZNCuuSGbZNUXEPYPs5BuHlB3gsIzU6RwUw46", admin: false},
+  {username: "test", password_digest: "$2a$10$qGdWy/CoWV5PqkEZB.WSLuHWw3TnLrvu1QKso4VqOkD/p5xVWYoD6", admin: true},
+  {username: "grump", password_digest: "$2a$10$2fh8I9hjfq89HbWJzkXmzuD5M2KJLiZuqUZImAzVvPCJqvy/DZcQK", admin: false},
+  {username: "Mikka D. Pineda", password_digest: "10101663368907181", admin: false},
+  {username: "groot", password_digest: "$2a$10$G8vTcG.YU90N/zE8cmnm0um7q7HzZE3M1WQ1qSMyEdKbtKNkNw8VK", admin: false}
+])
